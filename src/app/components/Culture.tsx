@@ -57,19 +57,22 @@ const values = [
 
 export default function Culture() {
   return (
-    <section id="kultura" className="py-24 md:py-32 px-6">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+    <section id="kultura" className="py-16 md:py-24 px-6 relative overflow-hidden">
+      {/* Background glow orbs */}
+      <div className="absolute -top-20 -left-40 w-[500px] h-[500px] glow-orb-blue opacity-30" />
+      <div className="absolute bottom-20 -right-40 w-[400px] h-[400px] glow-orb-magenta opacity-25" />
+      <div className="mx-auto max-w-7xl relative z-10">
+        <div className="text-center mb-12">
           <SectionLabel>Kultúra</SectionLabel>
           <AnimatedText
             as="h2"
-            className="font-safiro text-4xl md:text-5xl lg:text-6xl text-white mt-6 mb-6"
+            className="font-safiro text-3xl md:text-5xl lg:text-6xl text-white mt-5 mb-4"
           >
             Kontrasztok harmóniája
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-lg text-light-gray max-w-2xl mx-auto"
+            className="text-base md:text-lg text-light-gray max-w-2xl mx-auto"
             delay={0.1}
           >
             Az igazi értékek egy szervezet életében nem a falra írt szlogenek –
@@ -77,26 +80,26 @@ export default function Culture() {
           </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {values.map((value, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-magenta/20 hover:bg-white/[0.04] transition-all duration-300"
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="group p-6 md:p-8 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm hover:border-blue/15 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(0,56,255,0.04)] transition-all duration-300"
             >
-              <h3 className="font-safiro text-xl text-white mb-5">
+              <h3 className="font-safiro text-lg text-white mb-4">
                 {value.title}
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2">
                 {value.points.map((point, j) => (
                   <li
                     key={j}
                     className="text-sm text-gray leading-relaxed flex gap-2"
                   >
-                    <span className="text-magenta/60 mt-1 flex-shrink-0">–</span>
+                    <span className="text-blue/50 mt-0.5 flex-shrink-0">–</span>
                     {point}
                   </li>
                 ))}
@@ -106,10 +109,10 @@ export default function Culture() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 text-center"
         >
           <Button href="#konzultacio">Dolgozzunk együtt</Button>
         </motion.div>

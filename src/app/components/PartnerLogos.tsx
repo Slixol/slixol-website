@@ -42,7 +42,7 @@ function LogoItem({ file, index }: { file: string; index: number }) {
 
 export default function PartnerLogos() {
   return (
-    <section className="py-24 md:py-32 overflow-hidden">
+    <section className="py-16 md:py-24 overflow-hidden">
       <div className="text-center mb-12 px-6">
         <AnimatedText
           as="h2"

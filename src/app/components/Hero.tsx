@@ -1,54 +1,62 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import HeroBlurBackground from "./HeroBlurBackground";
 import Button from "./ui/Button";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated blur background */}
-      <HeroBlurBackground />
+    <section className="relative min-h-screen flex items-end overflow-hidden">
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/hero/hero_slixol.mp4" type="video/mp4" />
+      </video>
 
-      {/* X symbol watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <Image
-          src="/logos/slixol-x-white-dark.png"
-          alt=""
-          width={600}
-          height={600}
-          className="opacity-[0.04] select-none"
-          aria-hidden
-        />
-      </div>
+      {/* Dark overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/70 to-dark/30" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pb-20 md:pb-28">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-safiro text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-6"
+        >
+          <span className="inline-block px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-blue border border-blue/30 rounded-full">
+            B2B digitalizáció & növekedés
+          </span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
+          className="font-safiro text-4xl md:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-white mb-6 max-w-4xl"
         >
           Magyarország első digitalizációs és növekedési partnere B2B és ipari
           cégek számára
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto mb-12 leading-relaxed"
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="text-base md:text-lg text-light-gray max-w-2xl mb-10 leading-relaxed"
         >
           Segítünk megújulni, fejlődni és adaptálódni – hogy cégként ne csak
           lépést tarts, hanem te határozd meg az irányt.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
         >
           <Button
             href="#konzultacio"

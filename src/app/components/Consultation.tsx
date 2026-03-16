@@ -6,28 +6,28 @@ import Button from "./ui/Button";
 
 export default function Consultation() {
   return (
-    <section id="konzultacio" className="py-24 md:py-32 px-6">
+    <section id="konzultacio" className="py-16 md:py-24 px-6">
       <div className="mx-auto max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center p-10 md:p-16 rounded-3xl border border-white/10 bg-gradient-to-br from-magenta/5 to-blue/5 relative overflow-hidden"
+          className="text-center p-8 md:p-14 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm relative overflow-hidden"
         >
           {/* Decorative blurred circles */}
-          <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-magenta/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-blue/10 blur-3xl pointer-events-none" />
+          <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-blue/8 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-blue/5 blur-3xl pointer-events-none" />
 
           <div className="relative z-10">
             <AnimatedText
               as="h2"
-              className="font-safiro text-3xl md:text-5xl text-white mb-4"
+              className="font-safiro text-2xl md:text-4xl text-white mb-3"
             >
               Kezdődjön el a változás
             </AnimatedText>
             <AnimatedText
               as="p"
-              className="text-lg text-light-gray mb-4 max-w-2xl mx-auto"
+              className="text-base text-light-gray mb-3 max-w-2xl mx-auto"
               delay={0.1}
             >
               Egy díjmentes, 60 perces felderítő konzultáció, ahol megismerjük a
@@ -35,7 +35,7 @@ export default function Consultation() {
             </AnimatedText>
             <AnimatedText
               as="p"
-              className="text-base text-gray mb-10 max-w-xl mx-auto"
+              className="text-sm text-gray mb-8 max-w-xl mx-auto"
               delay={0.15}
             >
               Nem pitchelünk – kérdezünk, hallgatunk, és felvázoljuk, hogyan
@@ -46,8 +46,7 @@ export default function Consultation() {
               Díjmentes felderítő konzultáció
             </Button>
 
-            {/* Calendly embed placeholder */}
-            <p className="mt-6 text-xs text-gray/50">
+            <p className="mt-5 text-xs text-gray/40">
               Vagy foglalj időpontot közvetlenül – Calendly link hamarosan
             </p>
           </div>

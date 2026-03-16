@@ -126,7 +126,7 @@ function AccordionItem({ item }: { item: FAQItem }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left group cursor-pointer"
       >
-        <span className="text-base text-white group-hover:text-magenta transition-colors pr-4">
+        <span className="text-base text-white group-hover:text-blue transition-colors pr-4">
           {item.q}
         </span>
         <motion.span
@@ -158,8 +158,11 @@ function AccordionItem({ item }: { item: FAQItem }) {
 
 export default function FAQ() {
   return (
-    <section id="gyik" className="py-24 md:py-32 px-6">
-      <div className="mx-auto max-w-3xl">
+    <section id="gyik" className="py-16 md:py-24 px-6 relative overflow-hidden">
+      {/* Background glow orbs */}
+      <div className="absolute top-40 -right-40 w-[400px] h-[400px] glow-orb-magenta opacity-25" />
+      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] glow-orb-blue opacity-30" />
+      <div className="mx-auto max-w-3xl relative z-10">
         <div className="text-center mb-16">
           <AnimatedText
             as="h2"
@@ -178,7 +181,7 @@ export default function FAQ() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05 }}
             >
-              <h3 className="font-safiro text-lg text-magenta mb-4">
+              <h3 className="font-safiro text-lg text-blue mb-4">
                 {cat.title}
               </h3>
               <div>

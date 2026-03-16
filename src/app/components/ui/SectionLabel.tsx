@@ -12,7 +12,7 @@ export default function SectionLabel({ children }: SectionLabelProps) {
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      className="inline-block px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-magenta border border-magenta/30 rounded-full"
+      className="inline-block px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-blue border border-blue/30 rounded-full"
     >
       {children}
     </motion.span>

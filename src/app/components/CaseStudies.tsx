@@ -3,148 +3,160 @@
 import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
-import Button from "./ui/Button";
+import ImagePlaceholder from "./ui/ImagePlaceholder";
 
-const featured = {
-  client: "VPT Caravan",
-  tags: ["Digitális átalakulás", "Lead generálás", "Webfejlesztés"],
-  challenge:
-    "A VPT Caravan egy tradicionális családi vállalkozás, amelynek online jelenlétük gyakorlatilag nem létezett. A megkeresések csak ajánlásból érkeztek.",
-  solution:
-    "Teljes digitális átalakítás: új weboldal, PPC kampányok, CRM bevezetés, sales folyamat automatizáció és content stratégia párhuzamosan.",
-  result: "Havi megkeresések 2-3x növekedés, teljes kapacitás kihasználtság",
-};
+interface CaseStudy {
+  client: string;
+  subtitle: string;
+  tags: string[];
+  challenge: string;
+  solution: string;
+  resultHighlight: string;
+  resultDetail: string;
+}
 
-const cases = [
+const caseStudies: CaseStudy[] = [
+  {
+    client: "VPT Caravan",
+    subtitle: "az újjászületés útján",
+    tags: ["Digitális átalakulás", "Lead generálás", "Webfejlesztés"],
+    challenge:
+      "A lakóautózást, mint életérzést beépíteni a köztudatba és közelebb hozni a magyar célközönséghez, miközben feltöltjük a bérlési üzletág kapacitásait.",
+    solution:
+      "Teljes digitális átalakulás: weboldal újragondolása, digitális lead generáló- és brand stratégia, ami a márkaismertség növelésétől a konkrét ajánlatkérésekig vezeti az érdeklődőket.",
+    resultHighlight: "2-3x havi megkeresés",
+    resultDetail:
+      "A nyári szezonban teljes kapacitás kihasználtságot értünk el, sőt az igény még magasabb is volt, mint amit a cég ki tudott szolgálni.",
+  },
   {
     client: "Hydropool",
-    tags: ["PPC", "Sales támogatás"],
-    result: "Havi 100+ lead, legsikeresebb évkezdés a cég történetében",
+    subtitle: "kiszámítható ajánlatkérési csatorna",
+    tags: ["PPC stratégia", "Sales támogatás", "Kreatív támogatás"],
+    challenge:
+      "Az ajánlatkérések mennyisége és minősége messze elmaradt a márka piaci potenciáljától.",
+    solution:
+      "Erős PPC stratégiával, különböző eszközök tesztelésével, valamint új kreatív megoldásokkal sikerült fordítani a helyzeten.",
+    resultHighlight: "Havi 100+ lead",
+    resultDetail:
+      "Kiszámítható ajánlatkérési csatornák épültek fel ebben a prémium szegmensben. 2025 januárjában a cég eddigi legsikeresebb évkezdését értük el.",
   },
   {
     client: "Ariston",
-    tags: ["PPC", "EDM", "Márkaépítés"],
-    result: "40.000+ kattintás, 54% konverzió",
+    subtitle: "digitális stratégia új alapokon",
+    tags: ["PPC stratégia", "E-mail marketing", "Szakmai márkaépítés"],
+    challenge:
+      "Az online jelenlétük nem volt kellően hatékony, a hirdetési rendszerek nem támogatták optimálisan sem a márkaismertséget, sem az értékesítési célokat.",
+    solution:
+      "Strukturált PPC és EDM stratégiát építettünk ki, szakmai jelenlétüket pedig megerősítettük a digitális térben.",
+    resultHighlight: "40.000+ kattintás, 54% konverzió",
+    resultDetail:
+      "Erős Google fókuszú always-on kampányok felépítése, kimagasló konverziós aránnyal az iparágban.",
   },
   {
     client: "REHM",
-    tags: ["TikTok", "Content"],
-    result: "10x követőszám, 1M+ elérés, teltházas nyílt napok",
+    subtitle: "a hegesztőipar jövőjének építése",
+    tags: ["Szakmai tartalmak", "Új sales csatorna"],
+    challenge:
+      "Hegesztés automatizálás témájában edukálni a szakmát és elindítani egy iparági diskurzust, amire korábban nem volt hatékony kommunikációs csatorna.",
+    solution:
+      "Strukturált tartalomstratégia, edukatív és kreatív videós tartalmakra építve. Fő platform a TikTok, ami teljesen organikusan növekedett.",
+    resultHighlight: "10x követők, 1M+ elérés",
+    resultDetail:
+      "Beérkező megkeresések és ajánlatkérések egy eddig nem használt csatornáról, teltházas nyílt napok.",
   },
 ];
 
 export default function CaseStudies() {
   return (
-    <section id="esettanulmanyok" className="py-24 md:py-32 px-6">
+    <section id="esettanulmanyok" className="py-16 md:py-24 px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <SectionLabel>Esettanulmányok</SectionLabel>
           <AnimatedText
             as="h2"
-            className="font-safiro text-4xl md:text-5xl lg:text-6xl text-white mt-6 mb-4"
+            className="font-safiro text-3xl md:text-5xl lg:text-6xl text-white mt-5 mb-3"
           >
             Amit építünk, működik
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-lg text-light-gray"
+            className="text-base md:text-lg text-light-gray"
             delay={0.1}
           >
             Valós rendszerek, valós eredmények
           </AnimatedText>
         </div>
 
-        {/* Featured case study */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8 p-8 md:p-12 rounded-2xl border border-white/10 bg-gradient-to-br from-magenta/5 to-blue/5"
-        >
-          <div className="flex flex-wrap gap-2 mb-4">
-            {featured.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs px-3 py-1 rounded-full border border-magenta/20 text-magenta"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <h3 className="font-safiro text-3xl md:text-4xl text-white mb-8">
-            {featured.client}
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <span className="text-xs uppercase tracking-widest text-gray mb-2 block">
-                Kihívás
-              </span>
-              <p className="text-light-gray text-sm leading-relaxed">
-                {featured.challenge}
-              </p>
-            </div>
-            <div>
-              <span className="text-xs uppercase tracking-widest text-gray mb-2 block">
-                Megoldás
-              </span>
-              <p className="text-light-gray text-sm leading-relaxed">
-                {featured.solution}
-              </p>
-            </div>
-            <div>
-              <span className="text-xs uppercase tracking-widest text-gray mb-2 block">
-                Eredmény
-              </span>
-              <p className="text-white font-medium text-lg">{featured.result}</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* 3 case study cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cases.map((c, i) => (
+        <div className="flex flex-col gap-6">
+          {caseStudies.map((c, i) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
+              key={c.client}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-blue/20 transition-all duration-300"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-blue/15 hover:bg-white/[0.05] transition-all duration-300"
             >
-              <div className="flex flex-wrap gap-2 mb-4">
-                {c.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-2.5 py-0.5 rounded-full border border-white/10 text-gray"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="flex flex-col md:flex-row">
+                {/* Left: content (~60%) */}
+                <div className="flex-[3] p-6 md:p-8 lg:p-10">
+                  <h3 className="font-safiro text-xl md:text-2xl text-white">
+                    {c.client}
+                    <span className="text-gray font-inter text-sm md:text-base ml-2">
+                      – {c.subtitle}
+                    </span>
+                  </h3>
+
+                  <div className="flex flex-wrap gap-1.5 mt-3 mb-5">
+                    {c.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[11px] px-2.5 py-0.5 rounded-full border border-blue/20 text-blue"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="space-y-4 text-sm">
+                    <div>
+                      <span className="text-xs uppercase tracking-widest text-gray mb-1 block">
+                        Kihívás
+                      </span>
+                      <p className="text-light-gray leading-relaxed">
+                        {c.challenge}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-xs uppercase tracking-widest text-gray mb-1 block">
+                        Megoldás
+                      </span>
+                      <p className="text-light-gray leading-relaxed">
+                        {c.solution}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-xs uppercase tracking-widest text-gray mb-1 block">
+                        Eredmény
+                      </span>
+                      <p className="font-safiro text-lg md:text-xl text-blue mb-1">
+                        {c.resultHighlight}
+                      </p>
+                      <p className="text-gray text-xs leading-relaxed">
+                        {c.resultDetail}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: image placeholder (~40%) */}
+                <div className="flex-[2] p-6 md:p-8 lg:p-10 flex items-center">
+                  <ImagePlaceholder className="aspect-[4/3] w-full" />
+                </div>
               </div>
-              <h3 className="font-safiro text-2xl text-white mb-4">
-                {c.client}
-              </h3>
-              <p className="text-light-gray text-sm">{c.result}</p>
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-20 text-center"
-        >
-          <h3 className="font-safiro text-3xl md:text-4xl text-white mb-3">
-            Építsünk együtt
-          </h3>
-          <p className="text-light-gray mb-8">
-            Megújulás, fejlődés, adaptálódás
-          </p>
-          <Button href="#konzultacio">Díjmentes stratégiai konzultáció</Button>
-        </motion.div>
       </div>
     </section>
   );

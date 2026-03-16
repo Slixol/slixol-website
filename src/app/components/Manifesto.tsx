@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "./ui/Button";
 
 const lines = [
@@ -18,50 +19,57 @@ const lines = [
   "Ha magadra ismersz, te is közénk tartozol.",
 ];
 
+function ManifestoLine({ line, index, total }: { line: string; index: number; total: number }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.85", "start 0.35"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.15, 1, 1, 0.35]);
+  const fontWeight = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [400, 600, 600, 400]);
+
+  const isEmphasis = index === 0 || index >= total - 3;
+
+  return (
+    <motion.p
+      ref={ref}
+      style={{ opacity, fontWeight }}
+      className={`font-safiro leading-snug transition-colors duration-300 ${
+        isEmphasis
+          ? "text-2xl md:text-4xl"
+          : "text-xl md:text-3xl"
+      } ${line.startsWith("...") ? "pl-4 md:pl-8" : ""}`}
+    >
+      {line}
+    </motion.p>
+  );
+}
+
 export default function Manifesto() {
   return (
-    <section className="py-24 md:py-40 px-6 relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-magenta/[0.03] to-transparent" />
-
+    <section className="py-16 md:py-32 px-6 relative overflow-hidden">
       <div className="relative mx-auto max-w-4xl">
         <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="block font-safiro text-5xl md:text-7xl lg:text-8xl text-white/5 uppercase tracking-widest mb-16 text-center"
+          className="block font-safiro text-5xl md:text-7xl lg:text-8xl text-white/[0.03] uppercase tracking-widest mb-12 text-center select-none"
         >
           manifesto
         </motion.span>
 
-        <div className="space-y-6 md:space-y-8">
+        <div className="space-y-5 md:space-y-7">
           {lines.map((line, i) => (
-            <motion.p
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.6,
-                delay: 0.05,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-              className={`font-safiro leading-snug ${
-                i === 0 || i >= lines.length - 3
-                  ? "text-2xl md:text-4xl text-white"
-                  : "text-xl md:text-3xl text-light-gray"
-              } ${line.startsWith("...") ? "pl-4 md:pl-8" : ""}`}
-            >
-              {line}
-            </motion.p>
+            <ManifestoLine key={i} line={line} index={i} total={lines.length} />
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 text-center"
         >
           <Button href="#konzultacio">Csatlakozz hozzánk</Button>
         </motion.div>

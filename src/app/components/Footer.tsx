@@ -100,7 +100,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="text-gray hover:text-magenta transition-colors"
+                className="text-gray hover:text-blue transition-colors"
               >
                 {social.icon}
               </a>

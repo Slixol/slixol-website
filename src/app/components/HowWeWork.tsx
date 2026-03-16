@@ -1,112 +1,259 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { type ReactNode, useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
 import Button from "./ui/Button";
 
-const steps = [
+interface Step {
+  num: string;
+  title: string;
+  tag?: string;
+  description: string;
+  icon: ReactNode;
+}
+
+const steps: Step[] = [
   {
     num: "01",
     title: "Felderítő konzultáció",
     tag: "díjmentes",
     description:
       "60 perces online meeting, ahol megismerjük a céged, a kihívásaid és a céljaid. Nem pitchelünk – kérdezünk és hallgatunk.",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        <path d="M8 10h.01" />
+        <path d="M12 10h.01" />
+        <path d="M16 10h.01" />
+      </svg>
+    ),
   },
   {
     num: "02",
     title: "Stratégiai audit",
     description:
       "Elemezzük a marketing, sales és rendszer infrastruktúrádat. Azonosítjuk a réseket, a duplikációkat és a lehetőségeket.",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
+        <path d="M8 11h6" />
+        <path d="M11 8v6" />
+      </svg>
+    ),
   },
   {
     num: "03",
     title: "Integrált növekedési terv",
     description:
       "Roadmap készítés – konkrét lépésekkel, időtávokkal, felelősökkel. Nem egy PowerPoint, hanem egy működő terv.",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <path d="M9 10l2 2 4-4" />
+        <path d="M9 16h6" />
+      </svg>
+    ),
   },
   {
     num: "04",
     title: "Párhuzamos építkezés",
     description:
       "A pod-ok összehangoltan dolgoznak. A marketing nem vár a tech-re, a sales nem vár a content-re. Minden egyszerre halad.",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
   },
   {
     num: "05",
     title: "Folyamatos optimalizálás",
     description:
       "Havi finomhangolás, negyedéves értékelés. Mérjük, elemezzük, iterálunk. Az eredmények beszélnek.",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21.5 2v6h-6" />
+        <path d="M2.5 22v-6h6" />
+        <path d="M21.5 8A9.96 9.96 0 0 0 12 2a9.96 9.96 0 0 0-7.5 3.5" />
+        <path d="M2.5 16A9.96 9.96 0 0 0 12 22a9.96 9.96 0 0 0 7.5-3.5" />
+      </svg>
+    ),
   },
   {
     num: "06",
     title: "Hosszú távú partnerség",
     description:
       "Az átlag együttműködési idő 26 hónap. Nem projekteket viszünk – hanem vállalatokat növesztünk.",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </svg>
+    ),
   },
 ];
 
-export default function HowWeWork() {
+function StepCard({ step, index }: { step: Step; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+
   return (
-    <section className="py-24 md:py-32 px-6">
-      <div className="mx-auto max-w-4xl">
-        <div className="text-center mb-16">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      className={`relative p-6 md:p-8 rounded-xl border transition-all duration-500 ${
+        isInView
+          ? "border-blue/30 bg-dark-card shadow-[0_0_40px_rgba(0,56,255,0.06)]"
+          : "border-white/[0.06] bg-white/[0.01]"
+      }`}
+    >
+      <div className="flex gap-5 md:gap-8">
+        {/* Icon + Number */}
+        <div className="flex-shrink-0 flex flex-col items-center gap-2">
+          <div
+            className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${
+              isInView
+                ? "bg-blue/20 shadow-[0_0_16px_rgba(0,56,255,0.15)]"
+                : "bg-blue/10"
+            }`}
+          >
+            <span
+              className={`w-5 h-5 transition-colors duration-500 ${
+                isInView ? "text-blue" : "text-gray"
+              }`}
+            >
+              {step.icon}
+            </span>
+          </div>
+          <span
+            className={`font-safiro text-3xl md:text-4xl transition-colors duration-500 ${
+              isInView ? "text-blue" : "text-white/10"
+            }`}
+          >
+            {step.num}
+          </span>
+        </div>
+
+        {/* Content */}
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="font-safiro text-lg md:text-xl text-white">
+              {step.title}
+            </h3>
+            {step.tag && (
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue/10 text-blue border border-blue/20">
+                {step.tag}
+              </span>
+            )}
+          </div>
+          <p className="text-gray text-sm leading-relaxed max-w-lg">
+            {step.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function HowWeWork() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const progressWidth = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
+
+  return (
+    <section className="py-16 md:py-24 px-6" ref={containerRef}>
+      <div className="mx-auto max-w-3xl">
+        <div className="text-center mb-12">
           <AnimatedText
             as="h2"
-            className="font-safiro text-4xl md:text-5xl lg:text-6xl text-white"
+            className="font-safiro text-3xl md:text-5xl lg:text-6xl text-white"
           >
             Hogyan dolgozunk?
           </AnimatedText>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-[27px] md:left-[31px] top-0 bottom-0 w-px bg-white/10" />
+        {/* Progress bar */}
+        <div className="mb-8 h-px bg-white/[0.06] rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-blue rounded-full"
+            style={{ width: progressWidth }}
+          />
+        </div>
 
-          <div className="space-y-0">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="relative flex gap-6 md:gap-8 group pb-12 last:pb-0"
-              >
-                {/* Number node */}
-                <div className="relative z-10 flex-shrink-0">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/10 bg-dark flex items-center justify-center group-hover:border-magenta/40 transition-colors duration-300">
-                    <span className="font-safiro text-sm md:text-base text-gray group-hover:text-magenta transition-colors duration-300">
-                      {step.num}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="pt-3 md:pt-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="font-safiro text-xl md:text-2xl text-white">
-                      {step.title}
-                    </h3>
-                    {step.tag && (
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-magenta/10 text-magenta border border-magenta/20">
-                        {step.tag}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-gray text-sm md:text-base leading-relaxed max-w-lg">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Steps */}
+        <div className="space-y-3">
+          {steps.map((step, i) => (
+            <StepCard key={i} step={step} index={i} />
+          ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 text-center"
         >
           <Button href="#konzultacio">Díjmentes konzultáció</Button>
         </motion.div>

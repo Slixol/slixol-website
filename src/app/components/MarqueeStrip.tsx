@@ -11,12 +11,12 @@ export default function MarqueeStrip() {
         <span className="font-safiro text-lg md:text-xl uppercase tracking-widest whitespace-nowrap">
           {word}
         </span>
-        <span className="w-2 h-2 rounded-full bg-white/60" />
+        <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
       </span>
     ));
 
   return (
-    <div className="bg-magenta py-4 overflow-hidden">
+    <div className="bg-blue py-3 overflow-hidden">
       <div className="flex animate-marquee">
         {content}
         {content}
