@@ -189,7 +189,7 @@ export default function ServiceCard({
           </motion.div>
           <div>
             <span
-              className={`font-mono text-gradient-blue-magenta ${isWide ? "text-5xl lg:text-6xl" : "text-4xl"} font-bold leading-none`}
+              className={`font-mono text-gradient-blue-magenta text-4xl font-bold leading-none`}
             >
               {service.num}
             </span>
