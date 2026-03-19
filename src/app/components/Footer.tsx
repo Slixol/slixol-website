@@ -45,7 +45,7 @@ const socialLinks = [
   },
   {
     label: "TikTok",
-    href: "#",
+    href: "https://www.tiktok.com/@slixolmedia",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -56,67 +56,107 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark border-t border-white/5 py-16 px-6">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
-          {/* Logo + tagline */}
-          <div>
-            <a href="#" className="flex items-center gap-2 mb-4">
-              <Image
-                src="/logos/slixol-x-magenta.png"
-                alt="Slixol"
-                width={32}
-                height={32}
-              />
-              <span className="font-safiro text-xl text-white tracking-tight">
-                slixol
-              </span>
-            </a>
-            <p className="text-sm text-gray max-w-xs">
-              Magyarország első digitalizációs és növekedési partnere B2B és
-              ipari cégek számára.
+    <footer className="bg-dark border-t border-white/5 relative overflow-hidden">
+      <div className="py-16 px-6">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Logo + tagline */}
+            <div>
+              <a href="#" className="flex items-center gap-2 mb-4">
+                <Image
+                  src="/logos/slixol-x-magenta.png"
+                  alt="Slixol"
+                  width={32}
+                  height={32}
+                />
+                <span className="font-safiro text-xl text-white tracking-tight">
+                  slixol
+                </span>
+              </a>
+              <p className="text-sm text-gray max-w-xs">
+                Magyarország első digitalizációs és növekedési partnere B2B és
+                ipari cégek számára.
+              </p>
+            </div>
+
+            {/* Navigation */}
+            <div>
+              <h4 className="font-safiro text-sm text-white mb-4">Navigáció</h4>
+              <nav className="flex flex-col gap-3">
+                {navItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm text-gray hover:text-white transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Contact info */}
+            <div>
+              <h4 className="font-safiro text-sm text-white mb-4">Elérhetőség</h4>
+              <div className="flex flex-col gap-3 text-sm text-gray">
+                <a
+                  href="mailto:brief@slixol-media.com"
+                  className="hover:text-white transition-colors"
+                >
+                  brief@slixol-media.com
+                </a>
+                <a
+                  href="tel:+36203773315"
+                  className="hover:text-white transition-colors"
+                >
+                  +36 20 377 3315
+                </a>
+                <p>1125 Budapest, Galgóczy utca 36</p>
+              </div>
+            </div>
+
+            {/* Social links */}
+            <div>
+              <h4 className="font-safiro text-sm text-white mb-4">Közösségi média</h4>
+              <div className="flex items-center gap-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="text-gray hover:text-blue transition-colors"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-gray">
+              &copy; {new Date().getFullYear()} Slixol. Minden jog fenntartva.
+            </p>
+            <p className="text-xs text-gray/50">
+              megújulás &middot; fejlődés &middot; adaptálódás
             </p>
           </div>
-
-          {/* Navigation */}
-          <nav className="flex flex-wrap gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-gray hover:text-white transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Social links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="text-gray hover:text-blue transition-colors"
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
         </div>
+      </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray">
-            © {new Date().getFullYear()} Slixol. Minden jog fenntartva.
-          </p>
-          <p className="text-xs text-gray/50">
-            megújulás · fejlődés · adaptálódás
-          </p>
-        </div>
+      {/* Half-cut large X logo at the bottom */}
+      <div className="relative h-32 md:h-48 flex items-end justify-center overflow-hidden">
+        <Image
+          src="/logos/slixol-x-magenta.png"
+          alt=""
+          width={300}
+          height={300}
+          className="translate-y-1/2 opacity-10 select-none pointer-events-none"
+          aria-hidden="true"
+        />
       </div>
     </footer>
   );

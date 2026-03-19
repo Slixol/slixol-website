@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
@@ -10,51 +11,231 @@ const values = [
   {
     title: "Nem túl komolyan",
     points: [
-      "Komolyak vagyunk a munkánkban, de nem magunkban.",
-      "Humor, kreativitás és energia – ezek hajtanak minket.",
+      "Merünk nevetni magunkon és nem vesszük magunkat túl komolyan.",
+      "Arra törekszünk, hogy élvezetet és könnyedséget találjunk munkában, miközben megőrizzük a professzionalizmust.",
+      "Legyünk autentikusak, de tudjuk hol a határ.",
     ],
   },
   {
     title: "Radikális felelősséget vállalva",
     points: [
-      "Nem mutogatunk – megoldjuk.",
-      "Ha hiba van, először a tükörbe nézünk.",
-      "Ownership, nem taszkmenedzsment.",
+      "Kölcsönösen arra ösztönözzük egymást, hogy vállaljunk felelősséget tetteinkért.",
+      "Törekszünk a fejlődésre, vállaljuk a felelősséget személyes és szakmai fejlődésünkért.",
+      "Gyorsan és ego mentesen beismerjük, ha hibáztunk.",
     ],
   },
   {
     title: "Nyíltan kommunikálva",
     points: [
-      "Nincs rejtett agenda.",
-      "Mondjuk, ha valami nem működik – és azt is, ha igen.",
-      "Transzparencia az alapértelmezett.",
+      "Aktívan hallgatunk, ahelyett, hogy egyből defenzíven reagálnánk.",
+      "Tisztelettel bánunk egymással és nem személyeskedünk, amikor nem értünk egyet másokkal.",
     ],
   },
   {
     title: "Agilisan és hatékonyan",
     points: [
-      "Sprint-ekben gondolkodunk, nem projektekben.",
-      "Gyors iteráció, kevés bürokrácia.",
-      "A sebesség versenyelőny.",
+      "Újragondoljuk a problémákat, hogy gyakorlati megoldásokat találjunk a nehéz kérdésekre.",
+      "Megkérdőjelezzük a berögzült feltételezéseket, ha indokolt, és jobb megközelítéseket javaslunk.",
+      "A gyors jobb, mint a lassú.",
+      "Nyitott elmével, befogadóan reagálunk egymás ötleteire.",
     ],
   },
   {
     title: "Ügyfélcentrikusan",
     points: [
-      "Az ügyfél sikere a mi sikerünk.",
-      "Nem eladunk – megoldást szállítunk.",
-      "Hosszú távon gondolkodunk.",
+      "Az ügyfélből indulunk ki, aztán haladunk visszafelé.",
+      "Aktívan hallgatunk, hogy megértsük ügyfeleink nézőpontját.",
+      "Őszinte érdeklődést mutatunk ügyfeleink sikere iránt.",
+      "Proaktívan azonosítjuk és kezeljük ügyfeleink problémáit, mielőtt azok eszkalálódnának.",
     ],
   },
   {
     title: "Reziliensen",
     points: [
-      "A kudarcból tanulunk, nem megállunk.",
-      "Változik a piac? Adaptálódunk.",
-      "Az ellenállóság a fenntarthatóság alapja.",
+      "Szembenézünk a kihívásokkal és megoldásokon dolgozunk, ahelyett, hogy elkerülnénk őket.",
+      "A kudarcokat és megpróbáltatásokat tanulási lehetőségként használjuk fel, hogy közösen fejlődjünk és tanuljunk belőlük.",
+      "Nyugodtan és magabiztosan alkalmazkodunk a változásokhoz és váratlan eseményekhez.",
     ],
   },
 ];
+
+const faceBase: React.CSSProperties = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backfaceVisibility: "hidden",
+  WebkitBackfaceVisibility: "hidden",
+};
+
+function FlipCard({
+  value,
+  index,
+  hydrated,
+}: {
+  value: (typeof values)[number];
+  index: number;
+  hydrated: boolean;
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const isEven = index % 2 === 1;
+  const number = String(index + 1).padStart(2, "0");
+
+  return (
+    <motion.div
+      initial={hydrated ? { opacity: 0, y: 20 } : false}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+    >
+      {/* Perspective + hover container — no Framer transform between perspective and preserve-3d */}
+      <div
+        className="group min-h-[360px] md:min-h-[370px] cursor-pointer"
+        style={{ perspective: "1000px" }}
+        onClick={() => setIsFlipped(!isFlipped)}
+      >
+        {/* Inner rotating element — all 3D props inline */}
+        <div
+          className="relative w-full min-h-[360px] md:min-h-[370px]"
+          style={{
+            transformStyle: "preserve-3d",
+            transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+            transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+          }}
+        >
+          {/* ── FRONT FACE ── */}
+          <div
+            className="rounded-2xl border p-6 md:p-8 flex flex-col justify-between"
+            style={{
+              ...faceBase,
+              borderColor: "rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.03)",
+            }}
+          >
+            {/* Corner gradient blob */}
+            <div
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{
+                background: isEven
+                  ? "radial-gradient(circle at 100% 100%, rgba(239,52,255,0.06), transparent 50%)"
+                  : "radial-gradient(circle at 0% 0%, rgba(0,56,255,0.06), transparent 50%)",
+              }}
+            />
+
+            <div className="relative z-10 flex flex-col items-center text-center flex-1 justify-center gap-4">
+              {/* Gradient icon circle */}
+              <div
+                className={`w-12 h-12 rounded-full flex items-center justify-center ${isEven ? "icon-glow-magenta" : "icon-glow-blue"}`}
+                style={{
+                  background: isEven
+                    ? "linear-gradient(135deg, #ef34ff, #0038ff)"
+                    : "linear-gradient(135deg, #0038ff, #ef34ff)",
+                }}
+              >
+                <span className="text-sm font-bold text-white font-mono">
+                  {number}
+                </span>
+              </div>
+
+              {/* Big gradient number */}
+              <span className="text-5xl font-bold font-mono text-gradient-blue-magenta">
+                {number}
+              </span>
+
+              {/* Title */}
+              <h3 className="font-safiro text-xl text-white">{value.title}</h3>
+
+              {/* Hint */}
+              <span className="text-xs text-white/30 transition-colors group-hover:text-white/50">
+                Felfedezés &rarr;
+              </span>
+            </div>
+
+            {/* Bottom gradient line */}
+            <div
+              className="relative z-10 h-[1.5px] rounded-full mt-4"
+              style={{
+                background: isEven
+                  ? "linear-gradient(to right, #ef34ff, #0038ff)"
+                  : "linear-gradient(to right, #0038ff, #ef34ff)",
+              }}
+            />
+          </div>
+
+          {/* ── BACK FACE ── */}
+          <div
+            className="rounded-2xl border p-6 md:p-8 flex flex-col"
+            style={{
+              ...faceBase,
+              transform: "rotateY(180deg)",
+              borderColor: "rgba(255,255,255,0.1)",
+              background: "rgba(255,255,255,0.03)",
+            }}
+          >
+            {/* Intensified gradient blob */}
+            <div
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{
+                background: isEven
+                  ? "radial-gradient(circle at 50% 50%, rgba(239,52,255,0.10), transparent 60%)"
+                  : "radial-gradient(circle at 50% 50%, rgba(0,56,255,0.10), transparent 60%)",
+              }}
+            />
+
+            <div className="relative z-10 flex flex-col h-full">
+              {/* Header row */}
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-lg font-bold font-mono text-gradient-blue-magenta">
+                  {number}
+                </span>
+                <span className="text-white/40">&mdash;</span>
+                <h3 className="font-safiro text-base text-white">
+                  {value.title}
+                </h3>
+              </div>
+
+              {/* Gradient divider */}
+              <div
+                className="h-[1.5px] rounded-full mb-4"
+                style={{
+                  background: isEven
+                    ? "linear-gradient(to right, #ef34ff, #0038ff)"
+                    : "linear-gradient(to right, #0038ff, #ef34ff)",
+                }}
+              />
+
+              {/* Bullet points */}
+              <ul className="space-y-2.5 flex-1">
+                {value.points.map((point, j) => (
+                  <li
+                    key={j}
+                    className="text-sm text-light-gray leading-relaxed flex gap-2.5 items-start"
+                  >
+                    <span
+                      className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full"
+                      style={{
+                        background: isEven
+                          ? "linear-gradient(135deg, #ef34ff, #0038ff)"
+                          : "linear-gradient(135deg, #0038ff, #ef34ff)",
+                      }}
+                    />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Back hint */}
+              <span className="text-xs text-white/30 mt-4 text-right">
+                &larr; Vissza
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Culture() {
   const hydrated = useHydrated();
@@ -78,36 +259,22 @@ export default function Culture() {
             className="text-base md:text-lg text-light-gray max-w-2xl mx-auto"
             delay={0.1}
           >
-            Az igazi értékek egy szervezet életében nem a falra írt szlogenek –
-            hanem a mindennapi döntések.
+            Az igazi értékek egy szervezet életében azok a viselkedésmódok és
+            készségek, amelyeket kölcsönösen értékelünk egymásban. Az értékekről
+            könnyű beszélni. Megélni őket már nehezebb. De pont ettől izgalmas –
+            azon kell közösen dolgoznunk, hogy ez napról napra egyre jobban
+            sikerüljön.
           </AnimatedText>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {values.map((value, i) => (
-            <motion.div
+            <FlipCard
               key={i}
-              initial={hydrated ? { opacity: 0, y: 20 } : false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="group p-6 md:p-8 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm hover:border-blue/15 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(0,56,255,0.04)] transition-all duration-300"
-            >
-              <h3 className="font-safiro text-lg text-white mb-4">
-                {value.title}
-              </h3>
-              <ul className="space-y-2">
-                {value.points.map((point, j) => (
-                  <li
-                    key={j}
-                    className="text-sm text-gray leading-relaxed flex gap-2"
-                  >
-                    <span className="text-blue/50 mt-0.5 flex-shrink-0">–</span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+              value={value}
+              index={i}
+              hydrated={hydrated}
+            />
           ))}
         </div>
 

@@ -20,7 +20,7 @@ export default function Button({
   icon,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-base transition-all duration-300 cursor-pointer";
+    "inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 cursor-pointer";
 
   const variants = {
     primary: "bg-magenta text-white hover:bg-magenta/80 hover:shadow-lg hover:shadow-magenta/25",

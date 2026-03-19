@@ -15,7 +15,7 @@ const blocks = [
     ),
     title: "Marketing és sales szétválva",
     description:
-      "A legtöbb cégnél a marketing és az értékesítés két külön világ. Az üzenetek, a célközönség és a mérőszámok nem találkoznak.",
+      "A marketing nem integrált az értékesítéssel. Az értékesítés nem támogatott megfelelő eszközökkel.",
   },
   {
     icon: (
@@ -27,7 +27,7 @@ const blocks = [
     ),
     title: "Rendszerek nincsenek integrálva",
     description:
-      "CRM, ERP, marketing automatizáció, weboldal – mind külön sziget. Az adatok nem áramlanak, a döntések nem adatvezéreltek.",
+      "A folyamatok nem digitalizáltak. Az AI lehetőségek kihasználatlanok. A CRM üres vagy még nincs is bevezetve a szervezetben.",
   },
   {
     icon: (
@@ -38,7 +38,7 @@ const blocks = [
     ),
     title: "Szakértelem nem jelenik meg online",
     description:
-      "Évtizedes tudás és tapasztalat rejtve marad. A potenciális ügyfelek nem találnak rátok, mert digitálisan láthatatlanok vagytok.",
+      "Évtizedek alatt felépített tudás rejtve marad a digitális térben.",
   },
   {
     icon: (
@@ -49,7 +49,7 @@ const blocks = [
     ),
     title: "Erősödő verseny",
     description:
-      "A versenytársaid már digitalizálnak. Aki most nem lép, az nemcsak lemarad – kiszorul a piacról.",
+      "A piac változik. Az új generációs vevők már máshogy döntenek. A versenytársak gyorsabban adaptálódnak.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Challenge() {
       <div className="absolute top-20 -right-40 w-[500px] h-[500px] glow-orb-blue opacity-40" />
       <div className="absolute -bottom-20 -left-40 w-[400px] h-[400px] glow-orb-magenta opacity-30" />
       <div className="mx-auto max-w-7xl relative z-10">
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-12 max-w-3xl mx-auto text-center">
           <SectionLabel>A kihívás</SectionLabel>
           <AnimatedText
             as="h2"
@@ -75,21 +75,39 @@ export default function Challenge() {
             className="text-base md:text-lg text-light-gray leading-relaxed"
             delay={0.1}
           >
-            A magyar B2B és ipari cégek többsége még mindig hagyományos
-            eszközökkel próbál növekedni egy digitális világban. A marketing
-            kampányok szétszórtak, az értékesítési folyamatok manuálisak, a
-            rendszerek nem beszélnek egymással.
+            A legtöbb ipari és B2B cégnél megvannak az alapok: (még) stabil
+            pozíció, tapasztalt csapat, jól működő termékek vagy szolgáltatások.
+            De miközben számos piac már digitálisan is fejlődik, sok vállalat
+            offline szakértelme és digitális jelenléte között egyre nagyobb
+            szakadék tátong.
+          </AnimatedText>
+          <AnimatedText
+            as="p"
+            className="text-base md:text-lg text-light-gray leading-relaxed mt-4"
+            delay={0.15}
+          >
+            A digitális átalakulás nem egyszeri projekt vagy kampány. Ehhez
+            folyamatos fejlődés és adaptálódás szükséges. Minél később kezdjük
+            el, annál nagyobb erőforrást igényel a felzárkózás.
+          </AnimatedText>
+          <AnimatedText
+            as="p"
+            className="text-base md:text-lg text-light-gray leading-relaxed mt-4"
+            delay={0.2}
+          >
+            A kérdés tehát nem az, hogy szükséges-e a változás. Hanem az, hogy
+            mikor kezdjük el.
           </AnimatedText>
           <AnimatedText
             as="p"
             className="text-base md:text-lg text-white font-medium mt-4"
-            delay={0.2}
+            delay={0.25}
           >
             Mert a digitalizáció halad. Te miért maradnál?
           </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
           {blocks.map((block, i) => (
             <motion.div
               key={i}
@@ -108,6 +126,21 @@ export default function Challenge() {
               </p>
             </motion.div>
           ))}
+
+          {/* Center pulsating orb between the 4 cards */}
+          <motion.div
+            initial={hydrated ? { opacity: 0, scale: 0.5 } : false}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center z-10"
+          >
+            <div className="absolute w-16 h-16 rounded-full bg-blue/20 animate-ping" style={{ animationDuration: "3s" }} />
+            <div className="absolute w-12 h-12 rounded-full bg-blue/10 backdrop-blur-sm border border-blue/20" />
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="relative z-10">
+              <path d="M4 4l12 12M16 4L4 16" stroke="#0038FF" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </motion.div>
         </div>
 
         <motion.div
@@ -116,7 +149,7 @@ export default function Challenge() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <Button href="#modszertan">Kezdjük el a felzárkózást</Button>
+          <Button href="#konzultacio">Kezdjük el a felzárkózást</Button>
         </motion.div>
       </div>
     </section>

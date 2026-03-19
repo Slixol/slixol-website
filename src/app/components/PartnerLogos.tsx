@@ -28,12 +28,12 @@ const row2 = partnerFiles.slice(30);
 
 function LogoItem({ file, index }: { file: string; index: number }) {
   return (
-    <div className="flex-shrink-0 w-[120px] h-[60px] md:w-[150px] md:h-[70px] flex items-center justify-center mx-6 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300">
+    <div className="flex-shrink-0 w-[80px] h-[40px] md:w-[100px] md:h-[50px] flex items-center justify-center mx-4 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300">
       <Image
         src={`/partners/${file}`}
         alt={`Partner ${index + 1}`}
-        width={150}
-        height={70}
+        width={100}
+        height={50}
         className="object-contain max-h-full w-auto"
         unoptimized={file.endsWith(".svg")}
       />
@@ -45,7 +45,7 @@ export default function PartnerLogos() {
   const hydrated = useHydrated();
 
   return (
-    <section className="py-16 md:py-24 overflow-hidden">
+    <section className="py-16 md:py-24 overflow-hidden relative bg-grid-pattern">
       <div className="text-center mb-12 px-6">
         <AnimatedText
           as="h2"
@@ -63,7 +63,7 @@ export default function PartnerLogos() {
         className="mb-8"
       >
         <div className="flex animate-marquee">
-          {[...row1, ...row1].map((file, i) => (
+          {[...row1, ...row1, ...row1].map((file, i) => (
             <LogoItem key={`r1-${i}`} file={file} index={i % row1.length} />
           ))}
         </div>
@@ -76,7 +76,7 @@ export default function PartnerLogos() {
         viewport={{ once: true }}
       >
         <div className="flex animate-marquee-reverse">
-          {[...row2, ...row2].map((file, i) => (
+          {[...row2, ...row2, ...row2].map((file, i) => (
             <LogoItem key={`r2-${i}`} file={file} index={i % row2.length} />
           ))}
         </div>

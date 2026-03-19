@@ -3,7 +3,6 @@
 import { type ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
-import Button from "./ui/Button";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface Step {
@@ -20,7 +19,7 @@ const steps: Step[] = [
     title: "Felderítő konzultáció",
     tag: "díjmentes",
     description:
-      "60 perces online meeting, ahol megismerjük a céged, a kihívásaid és a céljaid. Nem pitchelünk – kérdezünk és hallgatunk.",
+      "Egy strukturált online meeting során feltárjuk az üzleti célokat, a jelenlegi digitális állapotot és a növekedési kihívásokat. Azonosítjuk, hol tudunk segíteni, vagy őszintén elmondjuk, ha nem mi leszünk a megfelelő választás.",
     icon: (
       <svg
         width="24"
@@ -43,7 +42,7 @@ const steps: Step[] = [
     num: "02",
     title: "Stratégiai audit",
     description:
-      "Elemezzük a marketing, sales és rendszer infrastruktúrádat. Azonosítjuk a réseket, a duplikációkat és a lehetőségeket.",
+      "Elemzés a marketing, sales, belsős rendszerek és folyamatok jelenlegi állapotáról. Azonosítjuk a növekedési lehetőségeket, szűk keresztmetszeteket és prioritásokat.",
     icon: (
       <svg
         width="24"
@@ -66,7 +65,7 @@ const steps: Step[] = [
     num: "03",
     title: "Integrált növekedési terv",
     description:
-      "Roadmap készítés – konkrét lépésekkel, időtávokkal, felelősökkel. Nem egy PowerPoint, hanem egy működő terv.",
+      "Kidolgozzuk a teljes rendszert: marketing + sales + tech + AI + szakértői brand. Meghatározzuk az integrációs pontokat, és készítünk egy részletes roadmap-et.",
     icon: (
       <svg
         width="24"
@@ -88,7 +87,7 @@ const steps: Step[] = [
     num: "04",
     title: "Párhuzamos építkezés",
     description:
-      "A pod-ok összehangoltan dolgoznak. A marketing nem vár a tech-re, a sales nem vár a content-re. Minden egyszerre halad.",
+      "Szakértői csapataink (podok) párhuzamosan dolgoznak, de rendszeres egyeztetéssel biztosítjuk az összhangot. Minden elem támogatja a másikat, így biztosítva az integrált működést.",
     icon: (
       <svg
         width="24"
@@ -108,7 +107,7 @@ const steps: Step[] = [
     num: "05",
     title: "Folyamatos optimalizálás",
     description:
-      "Havi finomhangolás, negyedéves értékelés. Mérjük, elemezzük, iterálunk. Az eredmények beszélnek.",
+      "Havonta finomhangolunk, negyedévente részletesen értékelünk. Folyamatosan mérjük az eredményeket, közösen tanulunk és fejlődünk belőlük. Skálázzuk ami működik, módosítjuk ami nem.",
     icon: (
       <svg
         width="24"
@@ -131,7 +130,7 @@ const steps: Step[] = [
     num: "06",
     title: "Hosszú távú partnerség",
     description:
-      "Az átlag együttműködési idő 26 hónap. Nem projekteket viszünk – hanem vállalatokat növesztünk.",
+      "Nem projektalapú, hanem biztonságot nyújtó partneri viszony keretében dolgozunk együtt ügyfeleinkkel, ahol együtt növekszünk, közös érdekek mentén. Átlagosan 2+ év az együttműködési mutató (átlag LTV 26 hónap).",
     icon: (
       <svg
         width="24"
@@ -217,13 +216,12 @@ function StepCard({ step, index }: { step: Step; index: number }) {
 }
 
 export default function HowWeWork() {
-  const hydrated = useHydrated();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
-  const progressWidth = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
+  const progressHeight = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
 
   return (
     <section className="py-16 md:py-24 px-6" ref={containerRef}>
@@ -237,29 +235,23 @@ export default function HowWeWork() {
           </AnimatedText>
         </div>
 
-        {/* Progress bar */}
-        <div className="mb-8 h-px bg-white/[0.06] rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-blue rounded-full"
-            style={{ width: progressWidth }}
-          />
-        </div>
+        {/* Vertical progress bar layout */}
+        <div className="grid grid-cols-[4px_1fr] gap-6">
+          {/* Progress track */}
+          <div className="relative bg-white/[0.06] rounded-full overflow-hidden">
+            <motion.div
+              className="absolute top-0 left-0 w-full bg-blue rounded-full"
+              style={{ height: progressHeight }}
+            />
+          </div>
 
-        {/* Steps */}
-        <div className="space-y-3">
-          {steps.map((step, i) => (
-            <StepCard key={i} step={step} index={i} />
-          ))}
+          {/* Steps */}
+          <div className="space-y-3">
+            {steps.map((step, i) => (
+              <StepCard key={i} step={step} index={i} />
+            ))}
+          </div>
         </div>
-
-        <motion.div
-          initial={hydrated ? { opacity: 0, y: 15 } : false}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <Button href="#konzultacio">Díjmentes konzultáció</Button>
-        </motion.div>
       </div>
     </section>
   );

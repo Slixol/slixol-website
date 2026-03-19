@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
+import Button from "./ui/Button";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface CaseStudy {
@@ -27,7 +28,7 @@ const caseStudies: CaseStudy[] = [
       "Teljes digitális átalakulás: weboldal újragondolása, digitális lead generáló- és brand stratégia, ami a márkaismertség növelésétől a konkrét ajánlatkérésekig vezeti az érdeklődőket.",
     resultHighlight: "2-3x havi megkeresés",
     resultDetail:
-      "A nyári szezonban teljes kapacitás kihasználtságot értünk el, sőt az igény még magasabb is volt, mint amit a cég ki tudott szolgálni.",
+      "A beérkező, havi megkeresések száma a duplájára, esetenként a triplájára nőtt. A nyári szezonban teljes kapacitás kihasználtságot értünk el, sőt az igény még magasabb is volt, mint amit a cég ki tudott szolgálni.",
   },
   {
     client: "Hydropool",
@@ -36,10 +37,10 @@ const caseStudies: CaseStudy[] = [
     challenge:
       "Az ajánlatkérések mennyisége és minősége messze elmaradt a márka piaci potenciáljától.",
     solution:
-      "Erős PPC stratégiával, különböző eszközök tesztelésével, valamint új kreatív megoldásokkal sikerült fordítani a helyzeten.",
+      "Erős PPC stratégiával, különböző eszközök tesztelésével, valamint új kreatív megoldásokkal sikerült fordítani a helyzeten - kiszámítható és fenntartható ajánlatkérési csatorna épült ki az online térben.",
     resultHighlight: "Havi 100+ lead",
     resultDetail:
-      "Kiszámítható ajánlatkérési csatornák épültek fel ebben a prémium szegmensben. 2025 januárjában a cég eddigi legsikeresebb évkezdését értük el.",
+      "Kiszámítható ajánlatkérési csatornák épültek fel, ami kb. havi 100 lead beérkezését szállítja ebben a prémium szegmensben. 2025 januárjában a cég eddigi legsikeresebb évkezdését értük el közösen az ügyféllel.",
   },
   {
     client: "Ariston",
@@ -48,22 +49,22 @@ const caseStudies: CaseStudy[] = [
     challenge:
       "Az online jelenlétük nem volt kellően hatékony, a hirdetési rendszerek nem támogatták optimálisan sem a márkaismertséget, sem az értékesítési célokat.",
     solution:
-      "Strukturált PPC és EDM stratégiát építettünk ki, szakmai jelenlétüket pedig megerősítettük a digitális térben.",
+      "Egy mérhető és fenntartható digitális stratégia kialakítása, amely erősíti a márka B2B és B2C eléréseit is. Strukturált PPC és EDM stratégiát építettünk ki, szakmai jelenlétüket pedig megerősítettük a digitális térben, támogatva az ügyfelek információszerzését és döntéshozatalát.",
     resultHighlight: "40.000+ kattintás, 54% konverzió",
     resultDetail:
-      "Erős Google fókuszú always-on kampányok felépítése, kimagasló konverziós aránnyal az iparágban.",
+      "Egyik példaként említhetjük az erős Google fókuszú always-on kampányok felépítését, aminek köszönhetően több mint 40.000 kattintás érkezett a weboldalra 2024-ben. A kattintások 54%-át pedig beérkező konverzióként könyvelhettük el, ami kimagasló aránynak számít ebben az iparágban.",
   },
   {
     client: "REHM",
     subtitle: "a hegesztőipar jövőjének építése",
-    tags: ["Szakmai tartalmak", "Új sales csatorna"],
+    tags: ["Szakmai tartalmak", "Új sales támogató csatorna"],
     challenge:
-      "Hegesztés automatizálás témájában edukálni a szakmát és elindítani egy iparági diskurzust, amire korábban nem volt hatékony kommunikációs csatorna.",
+      "Hegesztés automatizálás témájában edukálni a szakmát és elindítani egy iparági diskurzust, amire korábban nem volt hatékony kommunikációs csatorna kiépítve.",
     solution:
-      "Strukturált tartalomstratégia, edukatív és kreatív videós tartalmakra építve. Fő platform a TikTok, ami teljesen organikusan növekedett.",
+      "Strukturált tartalomstratégiát alakítottunk ki, amely edukatív és kreatív videós tartalmakra épült. Fő platform a TikTok csatornájuk lett, ami teljesen organikusan növekedett, több százezres megtekintéseket, aktív szakmai kommenteket és vitákat generálva, ezzel erős szakmai márkaépítést indítva el. Egy merészebb, kísérletező kommunikáció ilyen réspiaci iparágakban is eredményesen tud működni.",
     resultHighlight: "10x követők, 1M+ elérés",
     resultDetail:
-      "Beérkező megkeresések és ajánlatkérések egy eddig nem használt csatornáról, teltházas nyílt napok.",
+      "A merész TikTok stratégiának köszönhetően ebben a réspiaci szektorban 7 hónap alatt, organikusan: követők száma 10x, 1M feletti elért közönség, beérkező megkeresések és ajánlatkérések egy eddig nem használt csatornáról, teltházas nyílt napok.",
   },
 ];
 
@@ -160,6 +161,29 @@ export default function CaseStudies() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <AnimatedText
+            as="h3"
+            className="font-safiro text-2xl md:text-3xl text-white mb-2"
+          >
+            Építsünk együtt
+          </AnimatedText>
+          <AnimatedText
+            as="p"
+            className="text-sm text-light-gray mb-6"
+            delay={0.1}
+          >
+            Megújulás, fejlődés, adaptálódás
+          </AnimatedText>
+          <Button href="#konzultacio">Díjmentes stratégiai konzultáció</Button>
+        </motion.div>
       </div>
     </section>
   );

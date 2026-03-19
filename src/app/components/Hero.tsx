@@ -21,25 +21,14 @@ export default function Hero() {
       </video>
 
       {/* Dark overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/70 to-dark/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-dark/20" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pb-20 md:pb-28">
-        <motion.div
-          initial={hydrated ? { opacity: 0, y: 10 } : false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6"
-        >
-          <span className="inline-block px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-blue border border-blue/30 rounded-full">
-            B2B digitalizáció & növekedés
-          </span>
-        </motion.div>
-
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pb-32 md:pb-40">
         <motion.h1
-          initial={hydrated ? { opacity: 0, y: 20 } : false}
+          initial={hydrated ? { opacity: 0, y: 14 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="font-safiro text-4xl md:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-white mb-6 max-w-4xl"
         >
           Magyarország első digitalizációs és növekedési partnere B2B és ipari
@@ -47,19 +36,20 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={hydrated ? { opacity: 0, y: 15 } : false}
+          initial={hydrated ? { opacity: 0, y: 12 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-base md:text-lg text-light-gray max-w-2xl mb-10 leading-relaxed"
         >
-          Segítünk megújulni, fejlődni és adaptálódni – hogy cégként ne csak
-          lépést tarts, hanem te határozd meg az irányt.
+          Segítünk megújulni, fejlődni és adaptálódni a digitális térben.
+          Marketing, sales támogatás, rendszerintegráció, AI implementálás,
+          szakértői márkaépítés. Összehangolva, egy stratégiai partnernél.
         </motion.p>
 
         <motion.div
           initial={hydrated ? { opacity: 0, y: 10 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
+          transition={{ duration: 0.9, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <Button
             href="#konzultacio"

@@ -55,11 +55,11 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 18s linear infinite;
 }
 
 .animate-marquee-reverse {
-  animation: marquee-reverse 35s linear infinite;
+  animation: marquee-reverse 22s linear infinite;
 }
 
 /* ── Premium glassmorphism utilities ── */
@@ -88,6 +88,36 @@ body {
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
 }
+
+/* Grid background pattern */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Gradient text for service numbers */
+.text-gradient-blue-magenta {
+  background: linear-gradient(135deg, #0038ff, #ef34ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle icon glow pulse */
+@keyframes icon-glow-blue {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 56, 255, 0.15); }
+  50% { box-shadow: 0 0 20px rgba(0, 56, 255, 0.25); }
+}
+@keyframes icon-glow-magenta {
+  0%, 100% { box-shadow: 0 0 12px rgba(239, 52, 255, 0.12); }
+  50% { box-shadow: 0 0 20px rgba(239, 52, 255, 0.20); }
+}
+.icon-glow-blue { animation: icon-glow-blue 3s ease-in-out infinite; }
+.icon-glow-magenta { animation: icon-glow-magenta 3s ease-in-out infinite; }
+
+/* 3D flip card — all critical 3D props are inline styles for reliability */
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
