@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
@@ -133,7 +134,7 @@ function AccordionItem({ item }: { item: FAQItem }) {
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="text-2xl text-gray flex-shrink-0"
+          className="text-2xl text-secondary flex-shrink-0"
         >
           +
         </motion.span>
@@ -147,7 +148,7 @@ function AccordionItem({ item }: { item: FAQItem }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-gray leading-relaxed pr-8">
+            <p className="pb-5 text-sm text-secondary leading-relaxed pr-8 whitespace-pre-line">
               {item.a}
             </p>
           </motion.div>
@@ -161,17 +162,18 @@ export default function FAQ() {
   const hydrated = useHydrated();
 
   return (
-    <section id="gyik" className="py-16 md:py-24 px-6 relative overflow-hidden">
-      {/* Background glow orbs */}
-      <div className="absolute top-40 -right-40 w-[400px] h-[400px] glow-orb-magenta opacity-25" />
-      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] glow-orb-blue opacity-30" />
+    <section id="gyik" className="section-padding px-6 relative overflow-hidden">
+      {/* Background glow — blue only */}
+      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] glow-orb-blue opacity-20" />
+
       <div className="mx-auto max-w-3xl relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-14">
+          <SectionLabel>GYIK</SectionLabel>
           <AnimatedText
             as="h2"
-            className="font-safiro text-4xl md:text-5xl lg:text-6xl text-white"
+            className="font-safiro text-3xl md:text-4xl lg:text-5xl heading-section text-white mt-6"
           >
-            Gyakran Ismételt Kérdések
+            Gyakori kérdések
           </AnimatedText>
         </div>
 
@@ -184,7 +186,7 @@ export default function FAQ() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05 }}
             >
-              <h3 className="font-safiro text-lg text-blue mb-4">
+              <h3 className="font-safiro text-lg text-blue mb-4 heading-card">
                 {cat.title}
               </h3>
               <div>
@@ -195,7 +197,6 @@ export default function FAQ() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

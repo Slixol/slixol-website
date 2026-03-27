@@ -90,10 +90,10 @@ function PodCard({
       initial={hydrated ? { opacity: 0, scale: 0.6, x: initialOffset?.x ?? 0, y: initialOffset?.y ?? 20 } : false}
       animate={isInView ? { opacity: 1, scale: 1, x: 0, y: 0 } : undefined}
       transition={{ duration: 0.6, delay: animDelay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`relative rounded-2xl border backdrop-blur-sm p-5 lg:p-6 cursor-pointer transition-all duration-300 ${
+      className={`relative rounded-2xl p-5 lg:p-6 cursor-pointer transition-all duration-300 ${
         isHovered
-          ? "border-blue/30 bg-white/[0.06] shadow-[0_0_30px_rgba(0,56,255,0.06)]"
-          : "border-white/[0.08] bg-white/[0.03] hover:border-white/[0.15]"
+          ? "border border-blue/30 bg-dark-surface shadow-[0_0_30px_rgba(0,56,255,0.06)]"
+          : "elevated-card"
       }`}
       onMouseEnter={() => setHoveredPod(index)}
       onMouseLeave={() => setHoveredPod(null)}
@@ -103,18 +103,18 @@ function PodCard({
         <span className={`transition-colors duration-300 ${isHovered ? "text-blue" : "text-gray"}`}>
           {podIcons[index]}
         </span>
-        <span className="text-sm font-medium text-white">{pod.name}</span>
+        <span className="font-safiro text-lg text-white heading-card">{pod.name}</span>
       </div>
 
       {/* Description */}
-      <p className="text-xs text-light-gray leading-relaxed mb-3">{pod.description}</p>
+      <p className="text-sm text-secondary leading-relaxed mb-3">{pod.description}</p>
 
       {/* Service tags — always visible */}
       <div className="flex flex-wrap gap-1.5">
         {pod.services.map((service) => (
           <span
             key={service}
-            className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] text-gray"
+            className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] text-secondary"
           >
             {service}
           </span>
@@ -136,34 +136,32 @@ export default function SlixolModel() {
   }
 
   return (
-    <section id="modszertan" className="py-16 md:py-24 px-6">
+    <section id="modszertan" className="section-padding px-6">
       <div className="mx-auto max-w-7xl">
         {/* Section header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-10 lg:mb-14">
           <SectionLabel>Slixol Modell</SectionLabel>
           <AnimatedText
             as="h2"
-            className="font-safiro text-3xl md:text-5xl lg:text-6xl text-white mt-5 mb-4"
+            className="font-safiro text-3xl md:text-4xl lg:text-5xl heading-section text-white mt-6 mb-6"
           >
             Egy kézben a szükséges szakértelem
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-base md:text-lg text-light-gray max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-secondary max-w-2xl mx-auto leading-relaxed"
             delay={0.1}
           >
-            Központi stratégia, szakértői csapatokkal. Nem egy klasszikus marketing ügynökségként
-            működünk, hanem egy olyan integrált digitalizációs és növekedési partner vagyunk, ahol
-            különálló szakértői csapatok (agency podok) dolgoznak együtt – egy központi stratégiai
-            vezetés alatt.
+            Nem egy klasszikus ügynökség vagyunk — integrált digitalizációs és növekedési partner,
+            ahol különálló szakértői csapatok dolgoznak együtt, egy központi stratégiai vezetés alatt.
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-base md:text-lg text-light-gray max-w-2xl mx-auto leading-relaxed mt-4"
+            className="text-base md:text-lg text-secondary max-w-2xl mx-auto leading-relaxed mt-5"
             delay={0.2}
           >
-            Mi egyben látjuk a teljes képet és biztosítjuk, hogy minden elem egymással összehangolva
-            támogassa a fejlődést, megújulást, adaptálódást.
+            Egyben látjuk a teljes képet. Minden elem összehangolva támogatja
+            a fejlődést, megújulást, adaptálódást.
           </AnimatedText>
         </div>
 
@@ -172,9 +170,8 @@ export default function SlixolModel() {
         {/* ============================================================ */}
         <div className="hidden lg:block" ref={desktopRef}>
           <div className="relative max-w-6xl mx-auto">
-            {/* Background glow orbs */}
+            {/* Background glow orb — blue only */}
             <div className="glow-orb-blue absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0" />
-            <div className="glow-orb-magenta absolute bottom-0 right-0 w-[400px] h-[400px] pointer-events-none z-0" />
 
             {/* Top row: Marketing + Sales */}
             <div className="grid grid-cols-2 gap-8 mb-8 relative z-10">
@@ -361,10 +358,10 @@ export default function SlixolModel() {
             >
               <button
                 onClick={() => handleMobileToggle(i)}
-                className={`w-full rounded-2xl backdrop-blur-md border p-4 text-left transition-colors duration-300 cursor-pointer ${
+                className={`w-full rounded-2xl border p-4 text-left transition-all duration-300 cursor-pointer ${
                   mobileExpanded === i
-                    ? "bg-white/[0.08] border-blue/30"
-                    : "bg-white/[0.04] border-white/[0.08]"
+                    ? "bg-dark-surface border-blue/30"
+                    : "elevated-card"
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -376,7 +373,7 @@ export default function SlixolModel() {
                     >
                       {podIcons[i]}
                     </span>
-                    <span className="text-sm font-medium text-white">{pod.name}</span>
+                    <span className="font-safiro text-lg text-white heading-card">{pod.name}</span>
                   </div>
                   <motion.svg
                     width="16"
@@ -400,7 +397,7 @@ export default function SlixolModel() {
                   {pod.services.map((service) => (
                     <span
                       key={service}
-                      className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] text-gray"
+                      className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] text-secondary"
                     >
                       {service}
                     </span>
@@ -418,7 +415,7 @@ export default function SlixolModel() {
                     className="overflow-hidden"
                   >
                     <div className="px-4 pb-4 pt-2">
-                      <p className="text-sm text-light-gray leading-relaxed">
+                      <p className="text-sm text-secondary leading-relaxed">
                         {pod.description}
                       </p>
                     </div>
@@ -434,7 +431,7 @@ export default function SlixolModel() {
           initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="mt-10 text-center"
         >
           <Button href="#szolgaltatasok">Tudj meg többet</Button>
         </motion.div>

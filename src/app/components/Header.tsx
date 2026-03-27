@@ -50,6 +50,7 @@ export default function Header() {
             alt="Slixol"
             width={36}
             height={36}
+            priority
           />
           <span className="font-safiro text-xl text-white tracking-tight">
             slixol
@@ -62,7 +63,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm text-light-gray hover:text-white transition-colors duration-200"
+              className="text-sm text-secondary hover:text-white transition-colors duration-200"
             >
               {item.label}
             </a>
@@ -117,7 +118,7 @@ export default function Header() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="text-2xl font-safiro text-white hover:text-magenta transition-colors"
+                  className="text-2xl font-safiro text-white hover:text-blue transition-colors"
                 >
                   {item.label}
                 </motion.a>

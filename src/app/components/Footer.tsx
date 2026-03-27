@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const navItems = [
@@ -8,6 +9,13 @@ const navItems = [
   { label: "Esettanulmányok", href: "#esettanulmanyok" },
   { label: "Kultúra", href: "#kultura" },
   { label: "GYIK", href: "#gyik" },
+];
+
+const legalLinks = [
+  { label: "Adatkezelési szabályzat", href: "/docs/Adatkezelesi_Szabalyzat.pdf" },
+  { label: "Adatvédelmi és adatbiztonsági szabályzat", href: "/docs/ADATVEDELMI-ES-ADATBIZTONSAGI-SZABALYZAT.pdf" },
+  { label: "Adatkezelési tevékenység nyilvántartása", href: "/docs/Adatkezelesi_tevekenyseg_nyilvantartasa.pdf" },
+  { label: "Incidens szabályzat", href: "/docs/Incidens_szabalyzat_nyilvantartas.pdf" },
 ];
 
 const socialLinks = [
@@ -45,7 +53,7 @@ const socialLinks = [
   },
   {
     label: "TikTok",
-    href: "https://www.tiktok.com/@slixolmedia",
+    href: "https://www.tiktok.com/@slixol",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -55,11 +63,34 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const overscrollCount = useRef(0);
+
+  useEffect(() => {
+    function handleWheel(e: WheelEvent) {
+      // Only trigger when scrolled to the very bottom and trying to scroll down
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+      if (atBottom && e.deltaY > 0) {
+        overscrollCount.current++;
+        // After 3 consecutive overscroll attempts, jump to consultation
+        if (overscrollCount.current >= 3) {
+          overscrollCount.current = 0;
+          document.getElementById("konzultacio")?.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        overscrollCount.current = 0;
+      }
+    }
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, []);
+
   return (
     <footer className="bg-dark border-t border-white/5 relative overflow-hidden">
       <div className="py-16 px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
             {/* Logo + tagline */}
             <div>
               <a href="#" className="flex items-center gap-2 mb-4">
@@ -73,7 +104,7 @@ export default function Footer() {
                   slixol
                 </span>
               </a>
-              <p className="text-sm text-gray max-w-xs">
+              <p className="text-sm text-secondary max-w-xs">
                 Magyarország első digitalizációs és növekedési partnere B2B és
                 ipari cégek számára.
               </p>
@@ -87,7 +118,7 @@ export default function Footer() {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="text-sm text-gray hover:text-white transition-colors"
+                    className="text-sm text-secondary hover:text-white transition-colors"
                   >
                     {item.label}
                   </a>
@@ -98,7 +129,7 @@ export default function Footer() {
             {/* Contact info */}
             <div>
               <h4 className="font-safiro text-sm text-white mb-4">Elérhetőség</h4>
-              <div className="flex flex-col gap-3 text-sm text-gray">
+              <div className="flex flex-col gap-3 text-sm text-secondary">
                 <a
                   href="mailto:brief@slixol-media.com"
                   className="hover:text-white transition-colors"
@@ -115,6 +146,24 @@ export default function Footer() {
               </div>
             </div>
 
+            {/* Legal / Szabályzatok */}
+            <div>
+              <h4 className="font-safiro text-sm text-white mb-4">Szabályzatok</h4>
+              <nav className="flex flex-col gap-3">
+                {legalLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-secondary hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
             {/* Social links */}
             <div>
               <h4 className="font-safiro text-sm text-white mb-4">Közösségi média</h4>
@@ -126,7 +175,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="text-gray hover:text-blue transition-colors"
+                    className="text-secondary hover:text-blue transition-colors"
                   >
                     {social.icon}
                   </a>
@@ -136,28 +185,31 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray">
+          <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-secondary">
               &copy; {new Date().getFullYear()} Slixol. Minden jog fenntartva.
             </p>
-            <p className="text-xs text-gray/50">
+            <p className="text-xs text-secondary/40">
               megújulás &middot; fejlődés &middot; adaptálódás
             </p>
           </div>
         </div>
       </div>
 
-      {/* Half-cut large X logo at the bottom */}
-      <div className="relative h-32 md:h-48 flex items-end justify-center overflow-hidden">
+      {/* Half-cut large X logo — clicking scrolls to consultation */}
+      <a
+        href="#konzultacio"
+        aria-label="Vissza a konzultáció szekcióhoz"
+        className="relative h-32 md:h-48 flex items-end justify-center overflow-hidden cursor-pointer group"
+      >
         <Image
           src="/logos/slixol-x-magenta.png"
           alt=""
           width={300}
           height={300}
-          className="translate-y-1/2 opacity-10 select-none pointer-events-none"
-          aria-hidden="true"
+          className="translate-y-1/2 opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none"
         />
-      </div>
+      </a>
     </footer>
   );
 }

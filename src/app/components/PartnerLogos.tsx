@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedText from "./ui/AnimatedText";
+import SectionLabel from "./ui/SectionLabel";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
 const partnerFiles = [
@@ -45,38 +46,47 @@ export default function PartnerLogos() {
   const hydrated = useHydrated();
 
   return (
-    <section className="py-16 md:py-24 overflow-hidden relative bg-grid-pattern">
-      <div className="text-center mb-12 px-6">
+    <section className="section-padding overflow-hidden relative bg-grid-pattern">
+      <div className="text-center mb-10 md:mb-14 px-6">
+        <SectionLabel>Partnereink</SectionLabel>
         <AnimatedText
           as="h2"
-          className="font-safiro text-3xl md:text-4xl text-white"
+          className="font-safiro text-3xl md:text-4xl lg:text-5xl heading-section text-white mt-6 mb-6"
         >
           Ők már elindultak a digitalizáció útján
         </AnimatedText>
+        <AnimatedText
+          as="p"
+          className="text-base md:text-lg text-secondary max-w-2xl mx-auto"
+          delay={0.1}
+        >
+          Több mint 60 vállalkozás bízik a Slixol megoldásaiban.
+        </AnimatedText>
       </div>
 
-      {/* Row 1 - left to right */}
+      {/* Row 1 — scrolls left; 2 copies = seamless loop at translateX(-50%) */}
       <motion.div
         initial={hydrated ? { opacity: 0 } : false}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-8"
+        className="mb-8 overflow-hidden"
       >
-        <div className="flex animate-marquee">
-          {[...row1, ...row1, ...row1].map((file, i) => (
+        <div className="flex w-max animate-marquee">
+          {[...row1, ...row1].map((file, i) => (
             <LogoItem key={`r1-${i}`} file={file} index={i % row1.length} />
           ))}
         </div>
       </motion.div>
 
-      {/* Row 2 - right to left */}
+      {/* Row 2 — scrolls right; 2 copies = seamless loop */}
       <motion.div
         initial={hydrated ? { opacity: 0 } : false}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
+        className="overflow-hidden"
       >
-        <div className="flex animate-marquee-reverse">
-          {[...row2, ...row2, ...row2].map((file, i) => (
+        <div className="flex w-max animate-marquee-reverse">
+          {[...row2, ...row2].map((file, i) => (
             <LogoItem key={`r2-${i}`} file={file} index={i % row2.length} />
           ))}
         </div>

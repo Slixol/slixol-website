@@ -1,25 +1,12 @@
 "use client";
 
+import { useState } from "react";
+import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import ServiceCard from "./ServiceCard";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
-interface Service {
-  num: string;
-  title: string;
-  items: string[];
-}
-
-const serviceIcons = [
-  <svg key="0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>,
-  <svg key="1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
-  <svg key="2" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
-  <svg key="3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
-  <svg key="4" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>,
-  <svg key="5" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>,
-];
-
-const services: Service[] = [
+const services = [
   {
     num: "01",
     title: "Performance marketing",
@@ -90,34 +77,38 @@ const services: Service[] = [
 
 export default function Services() {
   const hydrated = useHydrated();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="szolgaltatasok" className="py-16 md:py-24 px-6">
+    <section id="szolgaltatasok" className="section-padding px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12">
+        <div className="text-center mb-10 md:mb-14">
+          <SectionLabel>Szolgáltatások</SectionLabel>
           <AnimatedText
             as="h2"
-            className="font-safiro text-3xl md:text-5xl lg:text-6xl text-white mb-3"
+            className="font-safiro text-3xl md:text-4xl lg:text-5xl heading-section text-white mt-6 mb-6"
           >
-            Szolgáltatások
+            Integrált megoldások a növekedéshez
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-base md:text-lg text-light-gray"
+            className="text-base md:text-lg text-secondary max-w-2xl mx-auto"
             delay={0.1}
           >
-            integrált digitális megoldások a növekedéshez
+            Hat szakértői terület, egy összehangolt stratégia.
           </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => (
             <ServiceCard
               key={service.num}
               service={service}
-              icon={serviceIcons[i]}
               index={i}
               hydrated={hydrated}
+              isAnyHovered={hoveredIndex !== null}
+              isHovered={hoveredIndex === i}
+              onHover={setHoveredIndex}
             />
           ))}
         </div>

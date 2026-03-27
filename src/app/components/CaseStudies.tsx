@@ -72,19 +72,19 @@ export default function CaseStudies() {
   const hydrated = useHydrated();
 
   return (
-    <section id="esettanulmanyok" className="py-16 md:py-24 px-6">
+    <section id="esettanulmanyok" className="section-padding px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 md:mb-14">
           <SectionLabel>Esettanulmányok</SectionLabel>
           <AnimatedText
             as="h2"
-            className="font-safiro text-3xl md:text-5xl lg:text-6xl text-white mt-5 mb-3"
+            className="font-safiro text-3xl md:text-4xl lg:text-5xl heading-section text-white mt-5 mb-3"
           >
             Amit építünk, működik
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-base md:text-lg text-light-gray"
+            className="text-base md:text-lg text-secondary"
             delay={0.1}
           >
             Valós rendszerek, valós eredmények
@@ -99,15 +99,15 @@ export default function CaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-blue/15 hover:bg-white/[0.05] transition-all duration-300"
+              className="elevated-card overflow-hidden"
             >
               <div className="flex flex-col md:flex-row">
                 {/* Left: content (~60%) */}
                 <div className="flex-[3] p-6 md:p-8 lg:p-10">
                   <h3 className="font-safiro text-xl md:text-2xl text-white">
                     {c.client}
-                    <span className="text-gray font-inter text-sm md:text-base ml-2">
-                      – {c.subtitle}
+                    <span className="text-secondary font-inter text-sm md:text-base ml-2">
+                      — {c.subtitle}
                     </span>
                   </h3>
 
@@ -124,29 +124,29 @@ export default function CaseStudies() {
 
                   <div className="space-y-4 text-sm">
                     <div>
-                      <span className="text-xs uppercase tracking-widest text-gray mb-1 block">
+                      <span className="text-xs uppercase tracking-widest text-white font-semibold mb-1 block">
                         Kihívás
                       </span>
-                      <p className="text-light-gray leading-relaxed">
+                      <p className="text-secondary leading-relaxed">
                         {c.challenge}
                       </p>
                     </div>
                     <div>
-                      <span className="text-xs uppercase tracking-widest text-gray mb-1 block">
+                      <span className="text-xs uppercase tracking-widest text-white font-semibold mb-1 block">
                         Megoldás
                       </span>
-                      <p className="text-light-gray leading-relaxed">
+                      <p className="text-secondary leading-relaxed">
                         {c.solution}
                       </p>
                     </div>
                     <div>
-                      <span className="text-xs uppercase tracking-widest text-gray mb-1 block">
+                      <span className="text-xs uppercase tracking-widest text-white font-semibold mb-1 block">
                         Eredmény
                       </span>
                       <p className="font-safiro text-lg md:text-xl text-blue mb-1">
                         {c.resultHighlight}
                       </p>
-                      <p className="text-gray text-xs leading-relaxed">
+                      <p className="text-secondary text-xs leading-relaxed">
                         {c.resultDetail}
                       </p>
                     </div>
@@ -167,7 +167,7 @@ export default function CaseStudies() {
           initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-10 text-center"
         >
           <AnimatedText
             as="h3"
@@ -177,7 +177,7 @@ export default function CaseStudies() {
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-sm text-light-gray mb-6"
+            className="text-sm text-secondary mb-6"
             delay={0.1}
           >
             Megújulás, fejlődés, adaptálódás

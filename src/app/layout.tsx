@@ -57,6 +57,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hu">
+      <head>
+        <link
+          rel="preload"
+          as="font"
+          href="/fonts/safiro-medium-webfont.woff2"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );
