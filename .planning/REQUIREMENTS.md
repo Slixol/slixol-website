@@ -57,24 +57,24 @@ Requirements for this iteration. Each maps to roadmap phases.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CONT-01 | — | Pending |
-| CONT-02 | — | Pending |
-| HERO-01 | — | Pending |
-| HERO-02 | — | Pending |
-| CASE-01 | — | Pending |
-| CASE-02 | — | Pending |
-| PART-01 | — | Pending |
-| PART-02 | — | Pending |
-| FOOT-01 | — | Pending |
-| MOB-01 | — | Pending |
-| MOB-02 | — | Pending |
-| MOB-03 | — | Pending |
+| CONT-01 | Phase 1 | Pending |
+| CONT-02 | Phase 1 | Pending |
+| HERO-01 | Phase 1 | Pending |
+| HERO-02 | Phase 1 | Pending |
+| PART-01 | Phase 1 | Pending |
+| PART-02 | Phase 1 | Pending |
+| FOOT-01 | Phase 1 | Pending |
+| CASE-01 | Phase 2 | Pending |
+| CASE-02 | Phase 2 | Pending |
+| MOB-01 | Phase 3 | Pending |
+| MOB-02 | Phase 3 | Pending |
+| MOB-03 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 12 total
-- Mapped to phases: 0
-- Unmapped: 12 ⚠️
+- Mapped to phases: 12
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-30*
-*Last updated: 2026-03-30 after initial definition*
+*Last updated: 2026-03-30 — traceability mapped after roadmap creation*
