@@ -36,10 +36,10 @@ The website must feel premium, intentional, and fast — every interaction shoul
 - ✓ En-dashes in all content — Phase 1
 - ✓ Partners grid behind logos with closed borders — Phase 1
 - ✓ Footer overscroll 3x debounced threshold — Phase 1
+- ✓ Case studies Lottie animations with lazy loading — Phase 2
 
 ### Active
 
-- [ ] Case studies: replace ImagePlaceholder with Lottie animations (4 files provided)
 - [ ] Mobile marquee/news bar: speed up animation (3 words appear too slowly)
 - [ ] Slixol Model mobile: scroll-based pod showcase, one pod visible at a time, compact circle diagram
 - [ ] Services mobile: scroll-triggered card activation (blue dot pattern on viewport center, like HowWeWork)
@@ -95,4 +95,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-31 after Phase 1 completion*
+*Last updated: 2026-03-31 after Phase 2 completion*
