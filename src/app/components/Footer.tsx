@@ -66,18 +66,25 @@ export default function Footer() {
   const overscrollCount = useRef(0);
 
   useEffect(() => {
+    let lastAttemptTime = 0;
+
     function handleWheel(e: WheelEvent) {
-      // Only trigger when scrolled to the very bottom and trying to scroll down
       const atBottom =
         window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+
       if (atBottom && e.deltaY > 0) {
-        overscrollCount.current++;
-        // After 3 consecutive overscroll attempts, jump to consultation
-        if (overscrollCount.current >= 3) {
-          overscrollCount.current = 0;
-          document.getElementById("konzultacio")?.scrollIntoView({ behavior: "smooth" });
+        const now = Date.now();
+        // Count one attempt per gesture (debounce: 400ms between attempts)
+        if (now - lastAttemptTime > 400) {
+          lastAttemptTime = now;
+          overscrollCount.current++;
+          if (overscrollCount.current >= 3) {
+            overscrollCount.current = 0;
+            document.getElementById("konzultacio")?.scrollIntoView({ behavior: "smooth" });
+          }
         }
-      } else {
+      } else if (!atBottom) {
+        // Reset counter if user scrolls away from bottom
         overscrollCount.current = 0;
       }
     }
