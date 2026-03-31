@@ -24,12 +24,12 @@ Requirements for this iteration. Each maps to roadmap phases.
 
 ### Partners Grid
 
-- [ ] **PART-01**: Grid pattern appears behind partner logos, not in front
-- [ ] **PART-02**: Grid has closed borders on all sides (top and bottom)
+- [x] **PART-01**: Grid pattern appears behind partner logos, not in front
+- [x] **PART-02**: Grid has closed borders on all sides (top and bottom)
 
 ### Footer
 
-- [ ] **FOOT-01**: Overscroll-to-consultation requires exactly 3 consecutive overscroll attempts before triggering
+- [x] **FOOT-01**: Overscroll-to-consultation requires exactly 3 consecutive overscroll attempts before triggering
 
 ### Mobile UX
 
@@ -61,9 +61,9 @@ Requirements for this iteration. Each maps to roadmap phases.
 | CONT-02 | Phase 1 | Complete |
 | HERO-01 | Phase 1 | Pending |
 | HERO-02 | Phase 1 | Pending |
-| PART-01 | Phase 1 | Pending |
-| PART-02 | Phase 1 | Pending |
-| FOOT-01 | Phase 1 | Pending |
+| PART-01 | Phase 1 | Complete |
+| PART-02 | Phase 1 | Complete |
+| FOOT-01 | Phase 1 | Complete |
 | CASE-01 | Phase 2 | Pending |
 | CASE-02 | Phase 2 | Pending |
 | MOB-01 | Phase 3 | Pending |

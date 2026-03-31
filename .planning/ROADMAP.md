@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — Brand casing (CONT-01) and em-dash fixes (CONT-02) across 7 files
 - [ ] 01-02-PLAN.md — Hero CTA restyle: flat magenta button with hover border glow (HERO-01, HERO-02)
-- [ ] 01-03-PLAN.md — Partners grid layering + borders (PART-01, PART-02) and footer overscroll debounce (FOOT-01)
+- [x] 01-03-PLAN.md — Partners grid layering + borders (PART-01, PART-02) and footer overscroll debounce (FOOT-01)
 **UI hint**: yes
 
 ### Phase 2: Lottie Integration
@@ -64,6 +64,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Content & UI Polish | 0/3 | Not started | - |
+| 1. Content & UI Polish | 2/3 | In Progress|  |
 | 2. Lottie Integration | 0/TBD | Not started | - |
 | 3. Mobile UX | 0/TBD | Not started | - |
