@@ -37,12 +37,13 @@ The website must feel premium, intentional, and fast — every interaction shoul
 - ✓ Partners grid behind logos with closed borders — Phase 1
 - ✓ Footer overscroll 3x debounced threshold — Phase 1
 - ✓ Case studies Lottie animations with lazy loading — Phase 2
+- ✓ Mobile marquee faster animation — Phase 3
+- ✓ Slixol Model scroll-pod with 5-dot indicator — Phase 3
+- ✓ Services mobile scroll-triggered activation — Phase 3
 
 ### Active
 
-- [ ] Mobile marquee/news bar: speed up animation (3 words appear too slowly)
-- [ ] Slixol Model mobile: scroll-based pod showcase, one pod visible at a time, compact circle diagram
-- [ ] Services mobile: scroll-triggered card activation (blue dot pattern on viewport center, like HowWeWork)
+(All v1 requirements complete — pending client review)
 
 ### Out of Scope
 
@@ -95,4 +96,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-31 after Phase 2 completion*
+*Last updated: 2026-03-31 after Phase 3 completion — all phases complete*
