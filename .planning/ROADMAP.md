@@ -43,7 +43,9 @@ Plans:
   1. All 4 case study cards display their assigned Lottie animation (not a grey placeholder)
   2. Lottie animations only load when the case studies section scrolls into viewport
   3. No measurable increase in initial page load (Lottie files lazy-loaded, not in critical bundle)
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 02-01-PLAN.md — Install lottie-react, extract JSON files, create LottieAnimation component, wire into CaseStudies
 **UI hint**: yes
 
 ### Phase 3: Mobile UX
