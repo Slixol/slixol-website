@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
@@ -395,54 +396,133 @@ export default function SlixolModel() {
             ))}
           </div>
 
-          {/* Pod cards — each occupies natural height, scroll drives activePod */}
-          <div className="space-y-4">
-            {pods.map((pod, i) => (
-              <motion.div
-                key={i}
-                data-pod-index={i}
-                initial={hydrated ? { opacity: 0, y: 20 } : false}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className={`rounded-2xl border p-5 transition-all duration-300 ${
-                  activePod === i
-                    ? "border-blue/30 bg-dark-surface shadow-[0_0_30px_rgba(0,56,255,0.06)]"
-                    : "elevated-card opacity-60"
-                }`}
-              >
-                {/* Icon + Name */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span
-                    className={`transition-colors duration-300 ${
-                      activePod === i ? "text-blue" : "text-gray"
-                    }`}
-                  >
-                    {podIcons[i]}
-                  </span>
-                  <span className="font-safiro text-lg text-white heading-card">{pod.name}</span>
-                </div>
+          {/* Pod cards — 2-center-3 structured layout */}
+          <div className="space-y-3">
 
-                {/* Description — always visible (no accordion) */}
-                <p className="text-sm text-secondary leading-relaxed mb-3">{pod.description}</p>
-
-                {/* Service tags */}
-                <div className="flex flex-wrap gap-1.5">
-                  {pod.services.map((service) => (
-                    <span
-                      key={service}
-                      className={`px-2.5 py-1 rounded-lg border text-[11px] transition-all duration-300 ${
-                        activePod === i
-                          ? "bg-blue/[0.08] border-blue/20 text-blue/80"
-                          : "bg-white/[0.04] border-white/[0.08] text-secondary"
-                      }`}
-                    >
-                      {service}
+            {/* Top row: pods 0 (Marketing) and 1 (Sales) */}
+            <div className="grid grid-cols-2 gap-3">
+              {[0, 1].map((i) => (
+                <motion.div
+                  key={i}
+                  data-pod-index={i}
+                  initial={hydrated ? { opacity: 0, y: 16 } : false}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.05 }}
+                  className={`rounded-xl border p-3 transition-all duration-300 ${
+                    activePod === i
+                      ? "border-blue/30 bg-dark-surface shadow-[0_0_24px_rgba(0,56,255,0.06)]"
+                      : "elevated-card opacity-60"
+                  }`}
+                >
+                  {/* Icon + Name */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`transition-colors duration-300 ${activePod === i ? "text-blue" : "text-gray"}`}>
+                      {React.cloneElement(podIcons[i] as React.ReactElement<{ width: number; height: number }>, { width: 16, height: 16 })}
                     </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                    <span className="font-safiro text-sm text-white heading-card leading-tight">{pods[i].name}</span>
+                  </div>
+
+                  {/* Description — visible on wider top-row cards */}
+                  <p className="text-xs text-secondary leading-relaxed mb-2 line-clamp-2">{pods[i].description}</p>
+
+                  {/* Service tags */}
+                  <div className="flex flex-wrap gap-1">
+                    {pods[i].services.map((service) => (
+                      <span
+                        key={service}
+                        className={`px-2 py-0.5 rounded-md border text-[10px] transition-all duration-300 ${
+                          activePod === i
+                            ? "bg-blue/[0.08] border-blue/20 text-blue/80"
+                            : "bg-white/[0.04] border-white/[0.08] text-secondary"
+                        }`}
+                      >
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Center: glassmorphism X logo + vertical connector lines + labels */}
+            <div className="relative flex flex-col items-center py-3">
+              {/* Vertical line UP to top row */}
+              <div className="w-px h-5 bg-gradient-to-t from-white/10 to-transparent mb-1" />
+
+              {/* "Központi stratégia" label */}
+              <span className="text-[10px] uppercase tracking-[0.2em] text-blue font-medium mb-3">
+                Központi stratégia
+              </span>
+
+              {/* Glassmorphism circle */}
+              <div
+                className="relative w-20 h-20 rounded-full backdrop-blur-md bg-white/[0.04] border border-white/[0.08] flex items-center justify-center"
+                style={{
+                  boxShadow: "0 0 40px rgba(0,56,255,0.15), 0 0 80px rgba(0,56,255,0.05), inset 0 0 20px rgba(255,255,255,0.02)",
+                }}
+              >
+                <Image
+                  src="/logos/slixol-x-magenta.png"
+                  alt="Slixol X"
+                  width={44}
+                  height={44}
+                  className="object-contain"
+                />
+              </div>
+
+              {/* "Egy ügyfél, egy rendszer" label */}
+              <span className="text-[10px] uppercase tracking-[0.2em] text-blue font-medium mt-3 mb-1">
+                Egy ügyfél, egy rendszer
+              </span>
+
+              {/* Vertical line DOWN to bottom row */}
+              <div className="w-px h-5 bg-gradient-to-b from-white/10 to-transparent mt-1" />
+            </div>
+
+            {/* Bottom row: pods 2 (Systems), 3 (AI), 4 (Brand) */}
+            <div className="grid grid-cols-3 gap-2">
+              {[2, 3, 4].map((i) => (
+                <motion.div
+                  key={i}
+                  data-pod-index={i}
+                  initial={hydrated ? { opacity: 0, y: 16 } : false}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.05 }}
+                  className={`rounded-xl border p-3 transition-all duration-300 ${
+                    activePod === i
+                      ? "border-blue/30 bg-dark-surface shadow-[0_0_24px_rgba(0,56,255,0.06)]"
+                      : "elevated-card opacity-60"
+                  }`}
+                >
+                  {/* Icon + Name */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`transition-colors duration-300 ${activePod === i ? "text-blue" : "text-gray"}`}>
+                      {React.cloneElement(podIcons[i] as React.ReactElement<{ width: number; height: number }>, { width: 16, height: 16 })}
+                    </span>
+                    <span className="font-safiro text-sm text-white heading-card leading-tight">{pods[i].name}</span>
+                  </div>
+
+                  {/* Service tags only — no description (3-col cards are narrow) */}
+                  <div className="flex flex-wrap gap-1">
+                    {pods[i].services.map((service) => (
+                      <span
+                        key={service}
+                        className={`px-2 py-0.5 rounded-md border text-[10px] transition-all duration-300 ${
+                          activePod === i
+                            ? "bg-blue/[0.08] border-blue/20 text-blue/80"
+                            : "bg-white/[0.04] border-white/[0.08] text-secondary"
+                        }`}
+                      >
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
           </div>
         </div>
 
