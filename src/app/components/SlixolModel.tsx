@@ -181,7 +181,7 @@ export default function SlixolModel() {
             className="text-base md:text-lg text-secondary max-w-2xl mx-auto leading-relaxed"
             delay={0.1}
           >
-            Nem egy klasszikus ügynökség vagyunk – integrált digitalizációs és növekedési partner,
+            Nem egy klasszikus ügynökség vagyunk - integrált digitalizációs és növekedési partner,
             ahol különálló szakértői csapatok dolgoznak együtt, egy központi stratégiai vezetés alatt.
           </AnimatedText>
           <AnimatedText

@@ -22,11 +22,11 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Mivel foglalkoztok pontosan?",
-        a: "A slixol Magyarország első digitalizációs és növekedési partnere B2B ipari cégek számára. Integrált digitális növekedési rendszereket építünk – marketingtől a CRM bevezetésig, sales támogatástól az AI automatizációig.",
+        a: "A slixol Magyarország első digitalizációs és növekedési partnere B2B ipari cégek számára. Integrált digitális növekedési rendszereket építünk - marketingtől a CRM bevezetésig, sales támogatástól az AI automatizációig.",
       },
       {
         q: "Miben különböztök egy klasszikus marketing ügynökségtől?",
-        a: "Házunk alatt különálló szakértői csapatok (podok) dolgoznak – marketing, sales, tech, AI, brand – de egy központi stratégiai vezetés alatt. Ez biztosítja, hogy minden elem összehangoltan működjön és támogassa a növekedést.\n\nSok esetben az ügyfél problémája nem a marketing eszközökben keresendő, hanem a működésben, stratégiában: szervezeti, folyamati, vagy technológiai szintű. Mi ezeket is feltárjuk és széles szakértői hálózatunkkal megoldási tervet készítünk rá.",
+        a: "Házunk alatt különálló szakértői csapatok (podok) dolgoznak - marketing, sales, tech, AI, brand - de egy központi stratégiai vezetés alatt. Ez biztosítja, hogy minden elem összehangoltan működjön és támogassa a növekedést.\n\nSok esetben az ügyfél problémája nem a marketing eszközökben keresendő, hanem a működésben, stratégiában: szervezeti, folyamati, vagy technológiai szintű. Mi ezeket is feltárjuk és széles szakértői hálózatunkkal megoldási tervet készítünk rá.",
       },
       {
         q: "Kikkel dolgoztok általában?",
@@ -105,15 +105,15 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Tudtok segíteni CRM vagy ERP rendszer bevezetésében is?",
-        a: "Jelenleg nem fejlesztünk ilyen termékeket, de ismerjük a magyar piac szinte összes szereplőjét, és támogatni tudjuk az előkészítést, igénydefiniálást, partnerkiválasztást. Nem hagyjuk az ügyfelet egyedül a döntésnél. Segítünk megfogalmazni az üzleti igényeket, és ezek alapján javaslatot adunk néhány testhezálló megoldásra – majd, ha szükséges, partnert is keresünk a bevezetéshez és támogatói szerepet töltünk be az egész folyamat során, az ügyfelünk érdekeit és céljait képviselve.",
+        a: "Jelenleg nem fejlesztünk ilyen termékeket, de ismerjük a magyar piac szinte összes szereplőjét, és támogatni tudjuk az előkészítést, igénydefiniálást, partnerkiválasztást. Nem hagyjuk az ügyfelet egyedül a döntésnél. Segítünk megfogalmazni az üzleti igényeket, és ezek alapján javaslatot adunk néhány testhezálló megoldásra - majd, ha szükséges, partnert is keresünk a bevezetéshez és támogatói szerepet töltünk be az egész folyamat során, az ügyfelünk érdekeit és céljait képviselve.",
       },
       {
         q: "Mi történik, ha nem tudjuk pontosan, mire van szükségünk?",
-        a: "Ez sokszor a kiindulópont. A legtöbb ügyfél nem egy konkrét szolgáltatással keres meg minket, hanem egy érzéssel: valami nem elég hatékony, valami nem áll össze. Mi segítünk ezt közösen kibontani – és onnan továbbépíteni.",
+        a: "Ez sokszor a kiindulópont. A legtöbb ügyfél nem egy konkrét szolgáltatással keres meg minket, hanem egy érzéssel: valami nem elég hatékony, valami nem áll össze. Mi segítünk ezt közösen kibontani - és onnan továbbépíteni.",
       },
       {
         q: "Van értelme megkeresni titeket, ha nincs külön marketinges a cégnél?",
-        a: "Igen – sőt, ilyenkor még fontosabb, hogy valaki segítse az iránytartást. Nem fogunk házon belüli marketingest \"kiváltani\", de tudunk stratégiai támaszt adni, és segíteni, hogy a rendszer működni tudjon.",
+        a: "Igen - sőt, ilyenkor még fontosabb, hogy valaki segítse az iránytartást. Nem fogunk házon belüli marketingest \"kiváltani\", de tudunk stratégiai támaszt adni, és segíteni, hogy a rendszer működni tudjon.",
       },
     ],
   },

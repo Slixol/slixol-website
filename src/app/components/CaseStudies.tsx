@@ -112,7 +112,7 @@ export default function CaseStudies() {
                   <h3 className="font-safiro text-xl md:text-2xl text-white">
                     {c.client}
                     <span className="text-secondary font-inter text-sm md:text-base ml-2">
-                      – {c.subtitle}
+                      - {c.subtitle}
                     </span>
                   </h3>
 

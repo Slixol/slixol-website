@@ -68,7 +68,7 @@ export default function Challenge() {
             delay={0.15}
           >
             A digitális átalakulás nem egyszeri projekt. Folyamatos adaptálódás
-            szükséges – és minél később kezdjük, annál nagyobb a felzárkózás ára.
+            szükséges - és minél később kezdjük, annál nagyobb a felzárkózás ára.
           </AnimatedText>
 
           {/* Visual break — blue accent line */}
