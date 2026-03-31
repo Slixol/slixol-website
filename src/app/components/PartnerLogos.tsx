@@ -71,7 +71,7 @@ export default function PartnerLogos() {
         viewport={{ once: true }}
         className="mb-8 overflow-hidden relative z-10"
       >
-        <div className="flex w-max animate-marquee">
+        <div className="flex w-max animate-partner-marquee">
           {[...row1, ...row1].map((file, i) => (
             <LogoItem key={`r1-${i}`} file={file} index={i % row1.length} />
           ))}
@@ -85,7 +85,7 @@ export default function PartnerLogos() {
         viewport={{ once: true }}
         className="overflow-hidden relative z-10"
       >
-        <div className="flex w-max animate-marquee-reverse">
+        <div className="flex w-max animate-partner-marquee-reverse">
           {[...row2, ...row2].map((file, i) => (
             <LogoItem key={`r2-${i}`} file={file} index={i % row2.length} />
           ))}
