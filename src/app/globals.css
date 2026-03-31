@@ -142,11 +142,11 @@ body {
   background: linear-gradient(to right, transparent, rgba(239, 52, 255, 0.3), transparent);
 }
 
-/* Grid background pattern — prominent visibility */
+/* Grid background pattern — subtle background (logos/content appear in front) */
 .bg-grid-pattern {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 

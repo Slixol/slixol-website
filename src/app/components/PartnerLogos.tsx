@@ -46,7 +46,7 @@ export default function PartnerLogos() {
   const hydrated = useHydrated();
 
   return (
-    <section className="section-padding overflow-hidden relative bg-grid-pattern">
+    <section className="section-padding overflow-hidden relative bg-grid-pattern border-t border-b border-white/8">
       <div className="text-center mb-10 md:mb-14 px-6">
         <SectionLabel>Partnereink</SectionLabel>
         <AnimatedText
@@ -69,7 +69,7 @@ export default function PartnerLogos() {
         initial={hydrated ? { opacity: 0 } : false}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-8 overflow-hidden"
+        className="mb-8 overflow-hidden relative z-10"
       >
         <div className="flex w-max animate-marquee">
           {[...row1, ...row1].map((file, i) => (
@@ -83,7 +83,7 @@ export default function PartnerLogos() {
         initial={hydrated ? { opacity: 0 } : false}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="overflow-hidden"
+        className="overflow-hidden relative z-10"
       >
         <div className="flex w-max animate-marquee-reverse">
           {[...row2, ...row2].map((file, i) => (
