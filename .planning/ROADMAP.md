@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. Overscroll-to-consultation triggers only after 3 consecutive overscroll attempts, not the first
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Brand casing (CONT-01) and em-dash fixes (CONT-02) across 7 files
+- [x] 01-01-PLAN.md — Brand casing (CONT-01) and em-dash fixes (CONT-02) across 7 files
 - [ ] 01-02-PLAN.md — Hero CTA restyle: flat magenta button with hover border glow (HERO-01, HERO-02)
 - [ ] 01-03-PLAN.md — Partners grid layering + borders (PART-01, PART-02) and footer overscroll debounce (FOOT-01)
 **UI hint**: yes

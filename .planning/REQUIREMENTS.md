@@ -9,8 +9,8 @@ Requirements for this iteration. Each maps to roadmap phases.
 
 ### Content Fixes
 
-- [ ] **CONT-01**: All "Slixol" text occurrences are lowercase "slixol" (except alt tags for logo images)
-- [ ] **CONT-02**: All em-dashes (—) in user-facing content are replaced with en-dashes (–)
+- [x] **CONT-01**: All "Slixol" text occurrences are lowercase "slixol" (except alt tags for logo images)
+- [x] **CONT-02**: All em-dashes (—) in user-facing content are replaced with en-dashes (–)
 
 ### Hero Section
 
@@ -57,8 +57,8 @@ Requirements for this iteration. Each maps to roadmap phases.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CONT-01 | Phase 1 | Pending |
-| CONT-02 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Complete |
+| CONT-02 | Phase 1 | Complete |
 | HERO-01 | Phase 1 | Pending |
 | HERO-02 | Phase 1 | Pending |
 | PART-01 | Phase 1 | Pending |
