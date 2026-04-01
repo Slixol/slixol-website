@@ -246,7 +246,7 @@ export default function Culture() {
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-base md:text-lg text-blue/60 max-w-2xl mx-auto"
+            className="text-base md:text-lg text-secondary max-w-2xl mx-auto"
             delay={0.1}
           >
             Az igazi értékek egy szervezet életében azok a viselkedésmódok és
