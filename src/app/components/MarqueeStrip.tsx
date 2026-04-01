@@ -7,7 +7,7 @@ export default function MarqueeStrip() {
     .fill(words)
     .flat()
     .map((word, i) => (
-      <span key={i} className="flex items-center gap-8 mx-8">
+      <span key={i} className="flex items-center gap-4 mx-4 sm:gap-8 sm:mx-8">
         <span className="font-safiro text-[11px] md:text-xs uppercase tracking-[0.2em] whitespace-nowrap text-white/50">
           {word}
         </span>

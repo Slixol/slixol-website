@@ -9,9 +9,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://slixol.com"),
-  title: "Slixol - Magyarország első digitalizációs és növekedési partnere",
+  title: "slixol - Magyarország első digitalizációs és növekedési partnere",
   description:
-    "B2B és ipari cégek digitalizációs és növekedési partnere. Marketing, sales, rendszerek, AI és márkaépítés egy kézben.",
+    "Magyarország első digitalizációs és növekedési partnere B2B és ipari cégek számára. Segítünk megújulni, fejlődni és adaptálódni a digitális térben. Marketing, sales támogatás, rendszerintegráció, AI implementálás, szakértői márkaépítés. Összehangolva, egy stratégiai partnernél.",
   keywords: [
     "digitalizáció",
     "B2B marketing",
@@ -31,19 +31,19 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Slixol - Digitalizációs és növekedési partner",
+    title: "slixol - Digitalizációs és növekedési partner",
     description:
-      "B2B és ipari cégek digitalizációs és növekedési partnere. Marketing, sales, rendszerek, AI és márkaépítés egy kézben.",
+      "Magyarország első digitalizációs és növekedési partnere B2B és ipari cégek számára. Segítünk megújulni, fejlődni és adaptálódni a digitális térben. Marketing, sales támogatás, rendszerintegráció, AI implementálás, szakértői márkaépítés. Összehangolva, egy stratégiai partnernél.",
     type: "website",
     locale: "hu_HU",
     url: "https://slixol.com",
-    siteName: "Slixol",
+    siteName: "slixol",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Slixol - Digitalizációs és növekedési partner",
+    title: "slixol - Digitalizációs és növekedési partner",
     description:
-      "B2B és ipari cégek digitalizációs és növekedési partnere.",
+      "Magyarország első digitalizációs és növekedési partnere B2B és ipari cégek számára.",
   },
   alternates: {
     canonical: "https://slixol.com",

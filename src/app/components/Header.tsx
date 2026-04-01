@@ -70,11 +70,23 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
+        {/* Desktop CTA — matches Hero flat magenta style */}
         <div className="hidden lg:block">
-          <Button href="#konzultacio" variant="primary" className="text-sm px-6 py-2.5">
+          <a
+            href="#konzultacio"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-medium text-sm text-white border border-white/20 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+            style={{ backgroundColor: "#ef34ff" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.4)";
+              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 0 20px rgba(239,52,255,0.5)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.2)";
+              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+            }}
+          >
             Felderítő konzultáció
-          </Button>
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -107,7 +119,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-[45] bg-dark/95 backdrop-blur-xl lg:hidden"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item, i) => (

@@ -74,7 +74,7 @@ export default function Hero() {
             whileTap={{ scale: 0.97 }}
           >
             <span
-              className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full font-medium text-white text-base border border-white/20 transition-all duration-300"
+              className="relative inline-flex items-center gap-2 sm:gap-3 px-5 py-3 sm:px-8 sm:py-4 rounded-full font-medium text-white text-sm sm:text-base border border-white/20 transition-all duration-300"
               style={{
                 backgroundColor: "#ef34ff",
                 boxShadow: "none",

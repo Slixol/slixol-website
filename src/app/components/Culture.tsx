@@ -115,8 +115,8 @@ function FlipCard({
             className="rounded-2xl p-7 md:p-8 flex flex-col justify-between"
             style={{
               ...faceBase,
-              background: "#151515",
-              border: "1px solid rgba(255,255,255,0.06)",
+              background: "#141828",
+              border: "1px solid rgba(77,122,255,0.12)",
               opacity: isFlipped ? 0 : 1,
               transition: "opacity 0s linear 0.3s",
             }}
@@ -126,7 +126,7 @@ function FlipCard({
               className="absolute inset-0 rounded-2xl pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle at 80% 20%, rgba(0,56,255,0.05), transparent 50%)",
+                  "radial-gradient(circle at 80% 20%, rgba(0,56,255,0.1), transparent 50%)",
               }}
             />
 
@@ -163,8 +163,8 @@ function FlipCard({
             style={{
               ...faceBase,
               transform: "rotateY(180deg)",
-              background: "#1a1a1a",
-              border: "1px solid rgba(0,56,255,0.15)",
+              background: "#161c30",
+              border: "1px solid rgba(77,122,255,0.2)",
               opacity: isFlipped ? 1 : 0,
               transition: "opacity 0s linear 0.3s",
             }}
@@ -174,7 +174,7 @@ function FlipCard({
               className="absolute inset-0 rounded-2xl pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 50%, rgba(0,56,255,0.06), transparent 60%)",
+                  "radial-gradient(circle at 50% 50%, rgba(0,56,255,0.12), transparent 60%)",
               }}
             />
 

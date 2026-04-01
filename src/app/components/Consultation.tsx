@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
@@ -9,8 +9,17 @@ import { useHydrated } from "@/app/hooks/useHydrated";
 export default function Consultation() {
   const hydrated = useHydrated();
   const calRef = useRef<HTMLDivElement>(null);
-  // Preload early — 2000px before entering viewport
   const isCalInView = useInView(calRef, { once: true, margin: "0px 0px 2000px 0px" });
+
+  useEffect(() => {
+    if (!isCalInView) return;
+    // Load Calendly widget script once when section is near viewport
+    if (document.querySelector('script[src*="calendly.com/assets/external/widget.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, [isCalInView]);
 
   return (
     <section id="konzultacio" className="section-padding px-6">
@@ -33,7 +42,7 @@ export default function Consultation() {
           </AnimatedText>
         </div>
 
-        {/* Calendly embed — seamless, no wrapper box */}
+        {/* Calendly inline widget */}
         <motion.div
           ref={calRef}
           initial={hydrated ? { opacity: 0, y: 20 } : false}
@@ -43,15 +52,10 @@ export default function Consultation() {
           className="w-full overflow-hidden"
         >
           {isCalInView ? (
-            <iframe
-              src="https://calendly.com/slixol/felderito-konzultacio?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0e0e0e&text_color=ffffff&primary_color=4d7aff"
-              width="100%"
-              height="700"
-              frameBorder="0"
-              loading="lazy"
-              sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
-              title="Felderítő konzultáció foglalása"
-              className="w-full min-h-[580px] md:min-h-[700px]"
+            <div
+              className="calendly-inline-widget w-full min-h-[580px] md:min-h-[700px]"
+              data-url="https://calendly.com/slixol/felderito-konzultacio?hide_gdpr_banner=1"
+              style={{ minWidth: "320px", height: "700px" }}
             />
           ) : (
             <div className="w-full min-h-[580px] md:min-h-[700px] flex items-center justify-center">

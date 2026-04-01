@@ -23,8 +23,8 @@ export default function Button({
     "inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 cursor-pointer";
 
   const variants = {
-    primary: "bg-magenta text-dark hover:bg-magenta/80 hover:shadow-lg hover:shadow-magenta/25",
-    secondary: "bg-blue text-dark hover:bg-blue/80 hover:shadow-lg hover:shadow-blue/25",
+    primary: "bg-magenta text-white hover:bg-magenta/80 hover:shadow-lg hover:shadow-magenta/25",
+    secondary: "bg-blue text-white hover:bg-blue/80 hover:shadow-lg hover:shadow-blue/25",
     outline:
       "border border-white/20 text-white hover:border-blue hover:text-blue bg-transparent",
   };
