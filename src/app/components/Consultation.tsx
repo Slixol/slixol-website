@@ -54,7 +54,7 @@ export default function Consultation() {
           {isCalInView ? (
             <div
               className="calendly-inline-widget w-full min-h-[580px] md:min-h-[700px]"
-              data-url="https://calendly.com/slixol/felderito-konzultacio?hide_gdpr_banner=1"
+              data-url="https://calendly.com/slixol/felderito-konzultacio?hide_gdpr_banner=1&background_color=0e0e0e&text_color=ffffff"
               style={{ minWidth: "320px", height: "700px" }}
             />
           ) : (
