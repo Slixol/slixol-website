@@ -21,7 +21,7 @@ export default function MarqueeStrip() {
       <div className="section-break-blue" />
 
       <div className="bg-white/[0.03] backdrop-blur-md border-y border-white/[0.06] py-3 overflow-hidden">
-        <div className="flex animate-marquee">
+        <div className="flex w-max animate-marquee">
           {content}
           {content}
         </div>

@@ -407,10 +407,11 @@ export default function SlixolModel() {
             {/* Vertical spine line — runs behind all cards */}
             <div className="absolute left-1/2 top-[120px] bottom-0 w-px bg-gradient-to-b from-white/10 via-white/6 to-transparent -translate-x-1/2 z-0" />
 
-            {/* Pod cards with horizontal connector lines */}
+            {/* Pod cards with skeleton connector lines */}
             <div className="relative z-10 space-y-3">
               {pods.map((pod, i) => {
                 const isLeft = i % 2 === 0;
+                const isLast = i === pods.length - 1;
                 return (
                   <motion.div
                     key={i}
@@ -427,6 +428,16 @@ export default function SlixolModel() {
                         isLeft ? "left-1/2 -translate-x-full" : "right-1/2 translate-x-full"
                       }`}
                     />
+
+                    {/* Left side vertical connector between cards */}
+                    {!isLast && isLeft && (
+                      <div className="absolute left-[4%] sm:left-[8%] top-full w-px h-3 bg-white/8 z-0" />
+                    )}
+
+                    {/* Right side vertical connector between cards */}
+                    {!isLast && !isLeft && (
+                      <div className="absolute right-[4%] sm:right-[8%] top-full w-px h-3 bg-white/8 z-0" />
+                    )}
 
                     {/* Card */}
                     <div

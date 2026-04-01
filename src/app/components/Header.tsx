@@ -36,7 +36,7 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         scrolled
           ? "backdrop-blur-xl bg-dark/70 border-b border-white/5"
           : "bg-transparent"
@@ -44,7 +44,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="relative z-50 flex items-center gap-2">
+        <a href="#" className="relative z-[110] flex items-center gap-2">
           <Image
             src="/logos/slixol-x-magenta.png"
             alt="Slixol"
@@ -92,7 +92,7 @@ export default function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+          className="lg:hidden relative z-[110] w-8 h-8 flex flex-col items-center justify-center gap-1.5"
           aria-label="Menü megnyitása"
         >
           <motion.span
@@ -119,7 +119,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[45] bg-dark/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-[105] bg-dark/95 backdrop-blur-xl lg:hidden"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item, i) => (
