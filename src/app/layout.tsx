@@ -75,6 +75,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TFH9KJK3');`,
           }}
         />
+        {/* Cloudflare Web Analytics */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "e04d9e26d5fd48eea844fbd653e440b4"}'
+        />
       </head>
       <body className={`${inter.variable} antialiased`}>
         {/* Google Tag Manager (noscript) */}
