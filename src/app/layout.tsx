@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://slixol.com"),
-  title: "slixol - Magyarország első digitalizációs és növekedési partnere",
+  title: "Slixol - Magyarország első digitalizációs és növekedési partnere",
   description:
     "B2B és ipari cégek digitalizációs és növekedési partnere. Marketing, sales, rendszerek, AI és márkaépítés egy kézben.",
   keywords: [
@@ -31,17 +31,17 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "slixol - Digitalizációs és növekedési partner",
+    title: "Slixol - Digitalizációs és növekedési partner",
     description:
       "B2B és ipari cégek digitalizációs és növekedési partnere. Marketing, sales, rendszerek, AI és márkaépítés egy kézben.",
     type: "website",
     locale: "hu_HU",
     url: "https://slixol.com",
-    siteName: "slixol",
+    siteName: "Slixol",
   },
   twitter: {
     card: "summary_large_image",
-    title: "slixol - Digitalizációs és növekedési partner",
+    title: "Slixol - Digitalizációs és növekedési partner",
     description:
       "B2B és ipari cégek digitalizációs és növekedési partnere.",
   },
