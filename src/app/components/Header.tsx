@@ -32,10 +32,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         scrolled
           ? "backdrop-blur-xl bg-dark/70 border-b border-white/5"
@@ -152,6 +149,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

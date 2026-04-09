@@ -94,13 +94,13 @@ body {
   will-change: transform;
 }
 
-/* Mobile: faster news bar marquee, slower partner logos */
+/* Mobile: slightly faster news bar marquee, slower partner logos */
 @media (max-width: 767px) {
   .animate-marquee {
-    animation-duration: 5s;
+    animation-duration: 25s;
   }
   .animate-marquee-reverse {
-    animation-duration: 7s;
+    animation-duration: 30s;
   }
   .animate-partner-marquee {
     animation-duration: 80s;

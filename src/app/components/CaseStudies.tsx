@@ -158,8 +158,8 @@ export default function CaseStudies() {
                   </div>
                 </div>
 
-                {/* Right: Lottie animation (~40%) */}
-                <div className="flex-[2] p-6 md:p-8 lg:p-10 flex items-center">
+                {/* Right: Lottie animation (~40%) — hidden on mobile */}
+                <div className="hidden md:flex flex-[2] p-6 md:p-8 lg:p-10 items-center">
                   <LottieAnimation src={c.lottieFile} className="aspect-square w-full" />
                 </div>
               </div>
