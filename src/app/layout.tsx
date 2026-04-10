@@ -65,6 +65,14 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        {/* Cookiebot — must load before GTM to block until consent */}
+        <script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="d31c01e0-0b16-452c-968e-00d5f4aae2dc"
+          data-blockingmode="auto"
+          type="text/javascript"
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

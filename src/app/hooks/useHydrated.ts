@@ -2,13 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-let hydrated = false;
-
 export function useHydrated() {
-  const [isHydrated, setIsHydrated] = useState(hydrated);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    hydrated = true;
     setIsHydrated(true);
   }, []);
 
