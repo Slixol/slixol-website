@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { categories } from "./faqData";
 
 export const BASE_URL = "https://slixol.com";
@@ -110,6 +111,31 @@ export const seoRoutes: SeoRoute[] = [
 
 export function getSeoRoute(slug: string): SeoRoute | undefined {
   return seoRoutes.find((r) => r.slug === slug);
+}
+
+/** Next.js metadata for a given sub-route slug. */
+export function buildMetadata(slug: string): Metadata {
+  const route = getSeoRoute(slug);
+  if (!route) return {};
+  const url = `${BASE_URL}/${route.slug}`;
+  return {
+    title: route.title,
+    description: route.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: route.title,
+      description: route.description,
+      type: "website",
+      locale: "hu_HU",
+      url,
+      siteName: "slixol",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: route.title,
+      description: route.description,
+    },
+  };
 }
 
 const organization = {
