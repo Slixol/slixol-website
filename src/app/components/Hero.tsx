@@ -3,7 +3,19 @@
 import { motion } from "framer-motion";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
-export default function Hero() {
+const DEFAULT_HEADING =
+  "Magyarország első digitalizációs és növekedési partnere";
+const DEFAULT_SUBTITLE =
+  "Segítünk megújulni, fejlődni és adaptálódni a digitális térben. Marketing, sales támogatás, rendszerintegráció, AI implementálás, szakértői márkaépítés. Összehangolva, egy stratégiai partnernél.";
+
+interface HeroProps {
+  /** Route-specific overrides — omitted on the homepage */
+  badge?: string;
+  heading?: string;
+  subtitle?: string;
+}
+
+export default function Hero({ badge, heading, subtitle }: HeroProps) {
   const hydrated = useHydrated();
 
   return (
@@ -22,6 +34,17 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-32 md:pt-40">
+        {badge && (
+          <motion.span
+            initial={hydrated ? { opacity: 0, y: 10 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center rounded-full border border-blue/40 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-blue mb-5"
+          >
+            {badge}
+          </motion.span>
+        )}
+
         {/* Heading + blue line + B2B subtitle */}
         <motion.h1
           initial={hydrated ? { opacity: 0, y: 14 } : false}
@@ -29,7 +52,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="font-safiro text-4xl md:text-5xl lg:text-6xl leading-[1.08] heading-display text-white mb-5 max-w-4xl"
         >
-          Magyarország első digitalizációs és növekedési partnere
+          {heading ?? DEFAULT_HEADING}
         </motion.h1>
 
         <motion.div
@@ -55,9 +78,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-base md:text-lg text-secondary max-w-xl mb-12 leading-relaxed"
         >
-          Segítünk megújulni, fejlődni és adaptálódni a digitális térben.
-          Marketing, sales támogatás, rendszerintegráció, AI implementálás,
-          szakértői márkaépítés. Összehangolva, egy stratégiai partnernél.
+          {subtitle ?? DEFAULT_SUBTITLE}
         </motion.p>
 
         {/* CTA — exciting pulsing glow button */}

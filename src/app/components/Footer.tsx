@@ -2,13 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { navigateToSection } from "@/app/lib/sectionNav";
 
 const navItems = [
-  { label: "Módszertan", href: "#modszertan" },
-  { label: "Szolgáltatások", href: "#szolgaltatasok" },
-  { label: "Esettanulmányok", href: "#esettanulmanyok" },
-  { label: "Kultúra", href: "#kultura" },
-  { label: "GYIK", href: "#gyik" },
+  { label: "Módszertan", slug: "modszertan", sectionId: "modszertan" },
+  { label: "Szolgáltatások", slug: "szolgaltatasok", sectionId: "szolgaltatasok" },
+  { label: "Esettanulmányok", slug: "esettanulmanyok", sectionId: "esettanulmanyok" },
+  { label: "Kultúra", slug: "kultura", sectionId: "kultura" },
+  { label: "GYIK", slug: "gyik", sectionId: "gyik" },
 ];
 
 const legalLinks = [
@@ -123,8 +124,9 @@ export default function Footer() {
               <nav className="flex flex-col gap-3">
                 {navItems.map((item) => (
                   <a
-                    key={item.href}
-                    href={item.href}
+                    key={item.slug}
+                    href={`/${item.slug}`}
+                    onClick={(e) => navigateToSection(e, item.slug, item.sectionId)}
                     className="text-sm text-secondary hover:text-white transition-colors"
                   >
                     {item.label}

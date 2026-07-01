@@ -1,0 +1,5 @@
+# Keep legal/privacy PDFs out of Google's index.
+# PDFs can't carry a <meta noindex>, so we signal via HTTP header instead.
+# Crawlers must still be ALLOWED (no robots.txt Disallow) to read this header.
+/docs/*
+  X-Robots-Tag: noindex, noarchive

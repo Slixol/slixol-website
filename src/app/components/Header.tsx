@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Button from "./ui/Button";
+import { navigateToSection } from "@/app/lib/sectionNav";
 
 const navItems = [
-  { label: "Módszertan", href: "#modszertan" },
-  { label: "Szolgáltatások", href: "#szolgaltatasok" },
-  { label: "Esettanulmányok", href: "#esettanulmanyok" },
-  { label: "Kultúra", href: "#kultura" },
-  { label: "GYIK", href: "#gyik" },
+  { label: "Módszertan", slug: "modszertan", sectionId: "modszertan" },
+  { label: "Szolgáltatások", slug: "szolgaltatasok", sectionId: "szolgaltatasok" },
+  { label: "Esettanulmányok", slug: "esettanulmanyok", sectionId: "esettanulmanyok" },
+  { label: "Kultúra", slug: "kultura", sectionId: "kultura" },
+  { label: "GYIK", slug: "gyik", sectionId: "gyik" },
 ];
 
 export default function Header() {
@@ -61,8 +62,9 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <a
-                key={item.href}
-                href={item.href}
+                key={item.slug}
+                href={`/${item.slug}`}
+                onClick={(e) => navigateToSection(e, item.slug, item.sectionId)}
                 className="text-sm text-secondary hover:text-white transition-colors duration-200"
               >
                 {item.label}
@@ -123,9 +125,12 @@ export default function Header() {
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item, i) => (
                 <motion.a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  key={item.slug}
+                  href={`/${item.slug}`}
+                  onClick={(e) => {
+                    navigateToSection(e, item.slug, item.sectionId);
+                    setMobileOpen(false);
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}

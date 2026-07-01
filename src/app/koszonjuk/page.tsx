@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Köszönjük - slixol",
   description: "Köszönjük a megkeresést! Hamarosan felvesszük veled a kapcsolatot.",
+  robots: { index: false, follow: true },
 };
 
 export default function KoszonjukPage() {

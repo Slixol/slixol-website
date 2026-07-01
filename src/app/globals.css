@@ -46,6 +46,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Offset anchored/section scrolling for the fixed header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 body {
   background: var(--color-dark);
   color: var(--color-white);
